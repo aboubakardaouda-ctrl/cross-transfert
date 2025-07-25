@@ -1,0 +1,8 @@
+node_modules
+functions/node_modules
+admin/node_modules
+package-lock.json
+functions/package-lock.json
+admin/package-lock.json
+firebase-debug.log
+
