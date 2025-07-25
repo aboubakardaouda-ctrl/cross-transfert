@@ -1,0 +1,19 @@
+{
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "start": "firebase emulators:start --only functions",
+    "dev:emu": "npm run build && firebase emulators:start --only functions,firestore,auth"
+  },
+  "dependencies": {
+    "firebase-admin": "^11.10.1",
+    "firebase-functions": "^4.4.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "eslint": "^8.56.0"
+  },
+  "engines": {
+    "node": "18"
+  }
+}

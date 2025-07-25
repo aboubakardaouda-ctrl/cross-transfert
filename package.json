@@ -1,0 +1,7 @@
+{
+  "name": "cross-transfert-root",
+  "private": true,
+  "scripts": {
+    "dev:emu": "cd functions && npm run dev:emu"
+  }
+}
