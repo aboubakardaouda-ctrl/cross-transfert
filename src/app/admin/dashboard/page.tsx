@@ -85,6 +85,17 @@ export default function AdminDashboard() {
               <p className="text-[10px] text-[#AAA] tracking-wider">中文译者年会</p>
             </div>
           </div>
+          <div className="flex items-center gap-3">
+            <a
+              href="/api/admin/export"
+              className="text-xs text-[#888] hover:text-[#155724] transition-colors flex items-center gap-1.5 border border-[#E8D5B0] px-2.5 py-1.5 rounded hover:border-[#A8D5B5]"
+              title="Exporter CSV"
+            >
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                <path d="M6.5 1v7M3.5 5.5l3 3 3-3M2 10h9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span className="hidden sm:inline">Export CSV</span>
+            </a>
           <button
             onClick={handleLogout}
             className="text-xs text-[#888] hover:text-[#8B1A1A] transition-colors flex items-center gap-1.5"
@@ -94,6 +105,7 @@ export default function AdminDashboard() {
             </svg>
             Déconnexion
           </button>
+          </div>
         </div>
       </div>
 

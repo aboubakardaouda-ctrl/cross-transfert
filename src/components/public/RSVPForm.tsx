@@ -58,6 +58,8 @@ export default function RSVPForm({ t, locale }: { t: Translations; locale: Local
 
       if (res.status === 409) {
         setErrors({ general: t.form.errorDuplicate });
+      } else if (res.status === 429) {
+        setErrors({ general: "Trop de tentatives depuis cette adresse. Réessayez dans 1 heure." });
       } else if (!res.ok) {
         setErrors({ general: t.form.errorGeneral });
       } else {
@@ -94,6 +96,17 @@ export default function RSVPForm({ t, locale }: { t: Translations; locale: Local
               En attente de validation de contribution
             </div>
           </div>
+
+          <a
+            href="/rsvp"
+            className="flex items-center justify-center gap-2 w-full py-3 border border-[#E8D5B0] rounded text-sm text-[#8B1A1A] hover:bg-[#FDF8F0] transition-colors font-light tracking-wide"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1.2" />
+              <path d="M7 4v3.5l2 1.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+            </svg>
+            Suivre l'état de mon dossier
+          </a>
         </div>
       </section>
     );

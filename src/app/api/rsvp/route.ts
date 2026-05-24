@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { sendAdminNotification } from "@/lib/email";
+import { checkRateLimit } from "@/lib/ratelimit";
 import { z } from "zod";
 
 const rsvpSchema = z.object({
@@ -15,6 +16,19 @@ const rsvpSchema = z.object({
 });
 
 export async function POST(req: NextRequest) {
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    req.headers.get("x-real-ip") ||
+    "unknown";
+
+  const { allowed } = checkRateLimit(ip);
+  if (!allowed) {
+    return NextResponse.json(
+      { error: "rate_limited", message: "Trop de tentatives. Réessayez dans 1 heure." },
+      { status: 429 }
+    );
+  }
+
   try {
     const body = await req.json();
     const data = rsvpSchema.parse(body);

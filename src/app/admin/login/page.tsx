@@ -1,11 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function AdminLoginPage() {
   const router = useRouter();
   const [form, setForm] = useState({ username: "", password: "" });
+
+  // Redirect if already logged in
+  useEffect(() => {
+    fetch("/api/admin/participants?limit=1").then((res) => {
+      if (res.ok) router.replace("/admin/dashboard");
+    });
+  }, [router]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 

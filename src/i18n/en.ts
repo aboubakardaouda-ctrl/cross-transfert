@@ -5,6 +5,7 @@ const en = {
     howItWorks: "How It Works",
     rsvp: "Confirm Attendance",
     admin: "Administration",
+    status: "My Status",
   },
   hero: {
     subtitle: "Annual Conference",

@@ -5,6 +5,7 @@ const fr = {
     howItWorks: "Comment ça fonctionne",
     rsvp: "Confirmer ma participation",
     admin: "Administration",
+    status: "Mon statut",
   },
   hero: {
     subtitle: "Conférence Annuelle",

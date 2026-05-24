@@ -26,6 +26,7 @@ export default function Navbar({
     { href: "#event", label: t.nav.event },
     { href: "#how", label: t.nav.howItWorks },
     { href: "#rsvp", label: t.nav.rsvp },
+    { href: "/rsvp", label: t.nav.status },
   ];
 
   return (

@@ -5,6 +5,7 @@ const zh = {
     howItWorks: "流程说明",
     rsvp: "确认参加",
     admin: "管理后台",
+    status: "我的状态",
   },
   hero: {
     subtitle: "年度盛会",
