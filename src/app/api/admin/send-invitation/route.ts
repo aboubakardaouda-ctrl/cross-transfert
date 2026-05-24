@@ -11,10 +11,13 @@ export async function POST(req: NextRequest) {
   try {
     const { participantId } = await req.json();
 
-    const participant = await prisma.participant.findUnique({
-      where: { id: participantId },
-      include: { payments: true },
-    });
+    const [participant, settings] = await Promise.all([
+      prisma.participant.findUnique({
+        where: { id: participantId },
+        include: { payments: true },
+      }),
+      prisma.eventSettings.findUnique({ where: { id: "default" } }),
+    ]);
 
     if (!participant) return NextResponse.json({ error: "not found" }, { status: 404 });
 
@@ -23,14 +26,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "contribution_incomplete" }, { status: 400 });
     }
 
-    const invNum = `INV-${participant.translatorId.toUpperCase()}-${new Date().getFullYear()}`;
+    const year = settings?.year || new Date().getFullYear();
+    const invNum = `INV-${participant.translatorId.toUpperCase()}-${year}`;
 
     const pdfBuffer = await generateInvitationPDF({
       fullName: participant.fullName,
       translatorId: participant.translatorId,
-      eventTitle: "Conférence Annuelle des Traducteurs Chinois",
-      eventDate: "À confirmer par l'organisateur",
-      eventLocation: "À confirmer par l'organisateur",
+      eventTitle: settings?.title || "Conférence Annuelle des Traducteurs Chinois",
+      eventDate: settings?.eventDate || "À confirmer",
+      eventLocation: settings?.eventLocation || "À confirmer",
       invitationNumber: invNum,
     });
 
@@ -39,13 +43,8 @@ export async function POST(req: NextRequest) {
     if (sent) {
       await prisma.participant.update({
         where: { id: participantId },
-        data: {
-          status: "invited",
-          invitationSent: true,
-          invitationSentAt: new Date(),
-        },
+        data: { status: "invited", invitationSent: true, invitationSentAt: new Date() },
       });
-
       await prisma.historyLog.create({
         data: {
           participantId,
@@ -53,7 +52,6 @@ export async function POST(req: NextRequest) {
           details: `Invitation PDF envoyée à ${participant.email} (${invNum})`,
         },
       });
-
       return NextResponse.json({ success: true, invitationNumber: invNum });
     } else {
       return NextResponse.json({ error: "email_failed" }, { status: 500 });

@@ -2,6 +2,7 @@
 
 import type { Translations } from "@/i18n";
 import { Ornament } from "@/components/ui/Ornament";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function EventSection({ t }: { t: Translations }) {
   const highlights = [
@@ -49,7 +50,7 @@ export default function EventSection({ t }: { t: Translations }) {
 
       <div className="max-w-md mx-auto">
         {/* Section header */}
-        <div className="text-center mb-12">
+        <ScrollReveal className="text-center mb-12">
           <span className="text-[10px] tracking-[0.3em] text-[#C9A96E] uppercase font-light block mb-3">
             {t.event.chinese}
           </span>
@@ -60,21 +61,23 @@ export default function EventSection({ t }: { t: Translations }) {
             {t.event.title}
           </h2>
           <Ornament />
-        </div>
+        </ScrollReveal>
 
         {/* Description */}
-        <p
-          className="text-base text-[#555] leading-relaxed text-center mb-12 font-light"
-          style={{ fontFamily: "var(--font-cormorant), Georgia, serif", fontSize: "1.1rem" }}
-        >
-          {t.event.description}
-        </p>
+        <ScrollReveal delay={100}>
+          <p
+            className="text-base text-[#555] leading-relaxed text-center mb-12 font-light"
+            style={{ fontFamily: "var(--font-cormorant), Georgia, serif", fontSize: "1.1rem" }}
+          >
+            {t.event.description}
+          </p>
+        </ScrollReveal>
 
         {/* Highlights */}
         <div className="space-y-4 mb-12">
           {highlights.map((item, i) => (
+            <ScrollReveal key={i} delay={i * 100} direction="left">
             <div
-              key={i}
               className="flex items-start gap-4 p-5 bg-white rounded border border-[#F0E8D0] transition-all duration-200"
               style={{ boxShadow: "0 1px 8px rgba(201,169,110,0.08)" }}
             >
@@ -86,6 +89,7 @@ export default function EventSection({ t }: { t: Translations }) {
                 <p className="text-sm text-[#777] leading-relaxed font-light">{item.desc}</p>
               </div>
             </div>
+            </ScrollReveal>
           ))}
         </div>
 

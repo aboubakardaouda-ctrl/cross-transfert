@@ -59,11 +59,6 @@ export default function AdminDashboard() {
 
   useEffect(() => { fetchData(); }, [fetchData]);
 
-  const handleLogout = async () => {
-    await fetch("/api/admin/auth", { method: "DELETE" });
-    router.push("/admin/login");
-  };
-
   const statusFilters = [
     { val: "", label: "Tous" },
     { val: "pending", label: "En attente" },
@@ -72,43 +67,7 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8F3EC]">
-      {/* Top bar */}
-      <div className="sticky top-0 z-30 bg-white border-b border-[#F0E8D0] px-5 py-3.5" style={{ boxShadow: "0 1px 8px rgba(0,0,0,0.05)" }}>
-        <div className="flex items-center justify-between max-w-2xl mx-auto">
-          <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 bg-[#8B1A1A] rounded flex items-center justify-center">
-              <span className="text-white text-xs" style={{ fontFamily: "serif" }}>中</span>
-            </div>
-            <div>
-              <p className="text-sm font-medium text-[#1A1A1A] leading-none">Administration</p>
-              <p className="text-[10px] text-[#AAA] tracking-wider">中文译者年会</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <a
-              href="/api/admin/export"
-              className="text-xs text-[#888] hover:text-[#155724] transition-colors flex items-center gap-1.5 border border-[#E8D5B0] px-2.5 py-1.5 rounded hover:border-[#A8D5B5]"
-              title="Exporter CSV"
-            >
-              <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                <path d="M6.5 1v7M3.5 5.5l3 3 3-3M2 10h9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <span className="hidden sm:inline">Export CSV</span>
-            </a>
-          <button
-            onClick={handleLogout}
-            className="text-xs text-[#888] hover:text-[#8B1A1A] transition-colors flex items-center gap-1.5"
-          >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M5 12H2a1 1 0 01-1-1V3a1 1 0 011-1h3M9 10l3-3-3-3M12 7H5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Déconnexion
-          </button>
-          </div>
-        </div>
-      </div>
-
+    <div className="bg-[#F8F3EC] min-h-[calc(100vh-56px)]">
       <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
         {/* Stats */}
         <div className="grid grid-cols-2 gap-3">

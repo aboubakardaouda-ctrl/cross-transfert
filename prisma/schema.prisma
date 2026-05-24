@@ -58,3 +58,15 @@ model Admin {
   password  String
   createdAt DateTime @default(now())
 }
+
+model EventSettings {
+  id            String  @id @default("default")
+  title         String  @default("Conférence Annuelle des Traducteurs Chinois")
+  titleEn       String  @default("Annual Chinese Translators' Conference")
+  titleZh       String  @default("中文译者年会")
+  eventDate     String  @default("À confirmer")
+  eventLocation String  @default("À confirmer")
+  totalRequired Float   @default(25000)
+  year          Int     @default(2025)
+  updatedAt     DateTime @updatedAt
+}

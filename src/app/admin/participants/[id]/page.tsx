@@ -148,9 +148,9 @@ export default function ParticipantDetailPage() {
   const sc = statusConfig[participant.status as keyof typeof statusConfig] || statusConfig.pending;
 
   return (
-    <div className="min-h-screen bg-[#F8F3EC]">
-      {/* Top bar */}
-      <div className="sticky top-0 z-30 bg-white border-b border-[#F0E8D0] px-4 py-3" style={{ boxShadow: "0 1px 6px rgba(0,0,0,0.05)" }}>
+    <div className="bg-[#F8F3EC] min-h-[calc(100vh-56px)]">
+      {/* Sub-header */}
+      <div className="bg-white border-b border-[#F0E8D0] px-4 py-3">
         <div className="flex items-center gap-3 max-w-2xl mx-auto">
           <button onClick={() => router.back()} className="p-1.5 text-[#888] hover:text-[#8B1A1A] transition-colors">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
