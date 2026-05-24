@@ -1,0 +1,160 @@
+@import "tailwindcss";
+
+:root {
+  --crimson: #8B1A1A;
+  --crimson-deep: #6B1313;
+  --crimson-light: #A52020;
+  --gold: #C9A96E;
+  --gold-light: #D4B97E;
+  --gold-pale: #F0E8D0;
+  --ivory: #FDFCF8;
+  --ivory-dark: #F5F0E8;
+  --ink: #1A1A1A;
+  --charcoal: #2D2D2D;
+  --stone: #888888;
+  --mist: #CCCCCC;
+  --jade: #4A7C6B;
+}
+
+@theme inline {
+  --color-crimson: var(--crimson);
+  --color-gold: var(--gold);
+  --color-ivory: var(--ivory);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+.font-elegant {
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* Ornamental divider */
+.ornament::before,
+.ornament::after {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  vertical-align: middle;
+  margin: 0 12px;
+}
+
+/* Chinese subtle text */
+.chinese-sub {
+  font-size: 0.75rem;
+  color: var(--stone);
+  letter-spacing: 0.15em;
+  font-weight: 300;
+  font-style: normal;
+  display: block;
+  margin-top: 4px;
+}
+
+/* Gold shimmer animation */
+@keyframes shimmer {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* Status badges */
+.status-pending {
+  background: #FEF3CD;
+  color: #92650A;
+  border: 1px solid #F0D070;
+}
+
+.status-validated {
+  background: #D4EDDA;
+  color: #155724;
+  border: 1px solid #A8D5B5;
+}
+
+.status-invited {
+  background: #D1E7FF;
+  color: #0A4A8A;
+  border: 1px solid #90C4F0;
+}
+
+/* Form inputs */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  font-size: 16px !important; /* Prevents iOS zoom */
+}
+
+/* Progress bar */
+.progress-track {
+  background: var(--gold-pale);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, var(--crimson), var(--crimson-light));
+  border-radius: 999px;
+  transition: width 0.8s ease-out;
+}
+
+/* Pattern overlay */
+.pattern-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A96E' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
