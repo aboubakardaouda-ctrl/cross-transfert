@@ -9,28 +9,41 @@ require_admin();
 <title>Paramètres — ACTILC</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#F8F3EC;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#333;min-height:100vh}
-nav{background:#8B1A1A;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100}
-.nav-brand{color:#fff;font-size:16px;letter-spacing:3px;font-family:Georgia,serif;font-weight:300}
-.nav-tabs{display:flex}
-.nav-tab{color:rgba(255,255,255,0.7);text-decoration:none;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:0 16px;height:52px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:.2s}
-.nav-tab:hover,.nav-tab.active{color:#fff;border-bottom-color:#C9A96E}
-.btn-logout{background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:6px 14px;border-radius:2px;font-size:11px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;text-decoration:none}
-.container{max-width:720px;margin:0 auto;padding:24px 16px}
-.card{background:#fff;border:1px solid #E8D5B0;border-radius:4px;padding:24px;margin-bottom:16px}
-.card-title{font-size:11px;color:#C9A96E;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid #F0E8D0}
+:root{--cr:#8B1A1A;--gold:#C9A96E;--bg:#F8F3EC;--border:#E8D5B0}
+body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#333;min-height:100vh;padding-bottom:68px}
+nav{background:var(--cr);padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100}
+.nav-brand{color:#fff;font-size:15px;letter-spacing:3px;font-family:Georgia,serif;font-weight:300}
+.nav-tabs{display:none}
+.nav-tab{color:rgba(255,255,255,.7);text-decoration:none;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:0 16px;height:52px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:.2s}
+.nav-tab:hover,.nav-tab.active{color:#fff;border-bottom-color:var(--gold)}
+.nav-logout{display:none;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2);padding:6px 14px;border-radius:2px;font-size:11px;letter-spacing:1px;text-transform:uppercase;text-decoration:none}
+.bottom-nav{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--border);z-index:100}
+.btab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 6px;text-decoration:none;color:#AAA;font-size:9px;letter-spacing:1px;text-transform:uppercase;border-top:2px solid transparent;transition:.2s;gap:3px}
+.btab.active{color:var(--cr);border-top-color:var(--cr)}
+.btab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8}
+.container{max-width:720px;margin:0 auto;padding:16px}
+.card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:14px}
+.card-title{font-size:10px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid #F0E8D0}
 label{display:block;font-size:11px;color:#888;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
-input,textarea{width:100%;padding:9px 12px;border:1px solid #E0D5C0;border-radius:2px;font-size:13px;background:#FDFCF8;outline:none;transition:.2s;margin-bottom:14px}
-input:focus,textarea:focus{border-color:#C9A96E;background:#fff}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.btn-save{padding:11px 28px;background:#8B1A1A;color:#fff;border:none;border-radius:2px;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:.2s}
+input,textarea{width:100%;padding:10px 12px;border:1px solid #E0D5C0;border-radius:6px;font-size:14px;background:#FDFCF8;outline:none;transition:.2s;margin-bottom:14px}
+input:focus,textarea:focus{border-color:var(--gold);background:#fff}
+.grid2{display:grid;grid-template-columns:1fr;gap:0}
+.btn-save{width:100%;padding:13px;background:var(--cr);color:#fff;border:none;border-radius:6px;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:.2s}
 .btn-save:hover{background:#6B1313}
-.btn-bulk{width:100%;padding:13px;background:linear-gradient(135deg,#C9A96E,#B8914A);color:#fff;border:none;border-radius:2px;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:.2s;margin-top:4px}
+.btn-bulk{width:100%;padding:14px;background:linear-gradient(135deg,var(--gold),#B8914A);color:#fff;border:none;border-radius:6px;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:.2s;margin-top:4px}
 .btn-bulk:hover{opacity:.9}
-.msg{padding:10px 14px;border-radius:2px;font-size:12px;margin-top:10px;display:none}
+.msg{padding:10px 14px;border-radius:6px;font-size:12px;margin-top:10px;display:none}
 .msg-ok{background:#D1FAE5;color:#065F46;border:1px solid #6EE7B7}
 .msg-err{background:#FEE2E2;color:#B91C1C;border:1px solid #FCA5A5}
-.info-box{background:#FDF8F0;border:1px solid #E8D5B0;border-radius:2px;padding:14px;font-size:12px;color:#666;line-height:1.6;margin-bottom:16px}
+.info-box{background:#FDF8F0;border:1px solid var(--border);border-radius:6px;padding:14px;font-size:12px;color:#666;line-height:1.6;margin-bottom:14px}
+@media(min-width:640px){
+  body{padding-bottom:0}
+  .bottom-nav{display:none}
+  .nav-tabs{display:flex}
+  .nav-logout{display:block}
+  .grid2{grid-template-columns:1fr 1fr;gap:16px}
+  .btn-save{width:auto}
+}
 </style>
 </head>
 <body>
@@ -40,8 +53,23 @@ input:focus,textarea:focus{border-color:#C9A96E;background:#fff}
     <a href="dashboard.php" class="nav-tab">Participants</a>
     <a href="settings.php" class="nav-tab active">Événement</a>
   </div>
-  <a href="<?= SITE_URL ?>/../api/logout.php" class="btn-logout">Déconnexion</a>
+  <a href="<?= SITE_URL ?>/../api/logout.php" class="nav-logout">Déconnexion</a>
 </nav>
+
+<div class="bottom-nav">
+  <a href="dashboard.php" class="btab">
+    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    Participants
+  </a>
+  <a href="settings.php" class="btab active">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    Événement
+  </a>
+  <a href="<?= SITE_URL ?>/../api/logout.php" class="btab">
+    <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+    Déconnexion
+  </a>
+</div>
 
 <div class="container">
 
