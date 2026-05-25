@@ -5,8 +5,8 @@
 // ============================================================
 
 define('DB_HOST', '127.0.0.1');
-define('DB_NAME', 'your_db_name');    // e.g. lws12345_actilc
-define('DB_USER', 'your_db_user');    // e.g. lws12345_admin
+define('DB_NAME', 'your_db_name');    // e.g. bille2778506
+define('DB_USER', 'your_db_user');    // e.g. bille2778506
 define('DB_PASS', 'your_db_password');
 
 // Admin password — run: php -r "echo password_hash('YourPassword', PASSWORD_DEFAULT);"

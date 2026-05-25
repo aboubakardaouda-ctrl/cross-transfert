@@ -828,7 +828,7 @@ async function loadPublicList() {
 
 // Init
 applyTranslations();
-requestAnimationFrame(() => requestAnimationFrame(initReveal));
+setTimeout(initReveal, 50);
 loadPublicList();
 </script>
 </body>
