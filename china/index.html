@@ -147,6 +147,21 @@ section{padding:64px 20px}
 .btn-status{display:inline-block;padding:10px 24px;border:1px solid var(--crimson);color:var(--crimson);border-radius:2px;text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;transition:.2s}
 .btn-status:hover{background:var(--crimson);color:#fff}
 
+/* ===== LISTE PARTICIPANTS ===== */
+#participants{background:#FDFCF8}
+.plist-count{font-size:13px;color:#888;text-align:center;margin-bottom:24px}
+.plist-count strong{color:var(--crimson)}
+.plist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:20px}
+.plist-item{background:#fff;border:1px solid #F0E8D0;border-radius:3px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 1px 6px rgba(0,0,0,.03)}
+.plist-name{font-size:13px;color:#1A1A1A;font-weight:500}
+.plist-city{font-size:11px;color:#AAA;margin-top:2px}
+.pbadge{display:inline-block;padding:2px 8px;border-radius:8px;font-size:10px;letter-spacing:1px;font-weight:500;white-space:nowrap}
+.pbadge-pending{background:#FEF3C7;color:#92400E}
+.pbadge-validated{background:#D1FAE5;color:#065F46}
+.pbadge-invited{background:#DBEAFE;color:#1E40AF}
+.plist-empty{text-align:center;padding:32px;color:#AAA;font-size:13px}
+.plist-loading{text-align:center;padding:32px;color:#AAA;font-size:13px}
+
 /* ===== FOOTER ===== */
 footer{background:#1A1A1A;color:#fff;padding:48px 24px}
 .footer-inner{max-width:520px;margin:0 auto;text-align:center}
@@ -184,6 +199,7 @@ footer{background:#1A1A1A;color:#fff;padding:48px 24px}
       <a href="#event" data-i18n="nav.event"></a>
       <a href="#why" data-i18n="nav.why"></a>
       <a href="#rsvp" data-i18n="nav.rsvp"></a>
+      <a href="#participants" data-i18n="nav.participants"></a>
       <a href="rsvp-status.html" data-i18n="nav.status"></a>
     </div>
     <div class="nav-right">
@@ -204,6 +220,7 @@ footer{background:#1A1A1A;color:#fff;padding:48px 24px}
   <a href="#event" class="menu-link" data-i18n="nav.event"></a>
   <a href="#why" class="menu-link" data-i18n="nav.why"></a>
   <a href="#rsvp" class="menu-link" data-i18n="nav.rsvp"></a>
+  <a href="#participants" class="menu-link" data-i18n="nav.participants"></a>
   <a href="rsvp-status.html" class="menu-link" data-i18n="nav.status"></a>
   <div class="lang-btns" style="margin-top:16px">
     <button class="lang-btn" data-lang="fr">FR</button>
@@ -398,6 +415,17 @@ footer{background:#1A1A1A;color:#fff;padding:48px 24px}
   </div>
 </section>
 
+<!-- LISTE PARTICIPANTS -->
+<section id="participants">
+  <div class="section-inner">
+    <span class="section-eyebrow reveal" data-i18n="plist.eyebrow"></span>
+    <h2 class="section-title reveal" data-i18n="plist.title"></h2>
+    <div class="ornament reveal"><div class="ornament-line"></div><span>✦</span><div class="ornament-line right"></div></div>
+    <div id="plistCount" class="plist-count reveal"></div>
+    <div id="plistGrid" class="plist-grid"><div class="plist-loading" data-i18n="plist.loading"></div></div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -417,7 +445,7 @@ footer{background:#1A1A1A;color:#fff;padding:48px 24px}
 // ===== TRANSLATIONS =====
 const TRANSLATIONS = {
   fr: {
-    'nav.event':'L\'Assemblée','nav.why':'Pourquoi le RSVP','nav.rsvp':'Confirmer','nav.status':'Mon statut',
+    'nav.event':'L\'Assemblée','nav.why':'Pourquoi le RSVP','nav.rsvp':'Confirmer','nav.participants':'Participants','nav.status':'Mon statut',
     'hero.subtitle':'2ème Assemblée Générale · 27 décembre 2026',
     'hero.titleFull':'ASSOCIATION CAMEROUNAISE DES TRADUCTEURS ET INTERPRÈTES DE LANGUE CHINOISE',
     'hero.chinese':'喀麦隆汉语翻译和口译员协会',
@@ -470,10 +498,14 @@ const TRANSLATIONS = {
     'form.required':'Ce champ est obligatoire','form.invalidEmail':'Adresse e-mail invalide',
     'form.duplicate':'Un RSVP avec cet e-mail ou ce matricule existe déjà.',
     'form.error':'Une erreur est survenue. Veuillez réessayer.',
+    'plist.eyebrow':'参与者名单','plist.title':'Participants confirmés',
+    'plist.count':n => n > 0 ? `<strong>${n}</strong> personne${n>1?'s':''} ont répondu au RSVP` : 'Soyez le premier à confirmer votre participation !',
+    'plist.loading':'Chargement…','plist.empty':'Aucun participant pour le moment.',
+    'pbadge.pending':'En attente','pbadge.validated':'Validé','pbadge.invited':'Invité',
     'footer.association':'ACTILC','footer.chinese':'喀麦隆汉语翻译和口译员协会','footer.rights':'Tous droits réservés',
   },
   en: {
-    'nav.event':'The Assembly','nav.why':'Why RSVP','nav.rsvp':'Confirm','nav.status':'My Status',
+    'nav.event':'The Assembly','nav.why':'Why RSVP','nav.rsvp':'Confirm','nav.participants':'Participants','nav.status':'My Status',
     'hero.subtitle':'2nd General Assembly · December 27, 2026',
     'hero.titleFull':'CAMEROONIAN ASSOCIATION OF CHINESE LANGUAGE TRANSLATORS AND INTERPRETERS',
     'hero.chinese':'喀麦隆汉语翻译和口译员协会',
@@ -526,10 +558,14 @@ const TRANSLATIONS = {
     'form.required':'This field is required','form.invalidEmail':'Invalid email address',
     'form.duplicate':'An RSVP with this email or membership number already exists.',
     'form.error':'An error occurred. Please try again.',
+    'plist.eyebrow':'Participants list','plist.title':'Confirmed participants',
+    'plist.count':n => n > 0 ? `<strong>${n}</strong> member${n>1?'s':''} have responded to the RSVP` : 'Be the first to confirm your participation!',
+    'plist.loading':'Loading…','plist.empty':'No participants yet.',
+    'pbadge.pending':'Pending','pbadge.validated':'Validated','pbadge.invited':'Invited',
     'footer.association':'ACTILC','footer.chinese':'喀麦隆汉语翻译和口译员协会','footer.rights':'All rights reserved',
   },
   zh: {
-    'nav.event':'关于大会','nav.why':'为什么RSVP','nav.rsvp':'确认参加','nav.status':'我的状态',
+    'nav.event':'关于大会','nav.why':'为什么RSVP','nav.rsvp':'确认参加','nav.participants':'参与者','nav.status':'我的状态',
     'hero.subtitle':'第二届全体大会 · 2026年12月27日',
     'hero.titleFull':'喀麦隆汉语翻译和口译员协会',
     'hero.chinese':'Association Camerounaise des Traducteurs et Interprètes de Langue Chinoise',
@@ -582,6 +618,10 @@ const TRANSLATIONS = {
     'form.required':'此项为必填项','form.invalidEmail':'电子邮件地址无效',
     'form.duplicate':'该邮箱或会员编号已存在RSVP记录。',
     'form.error':'发生错误，请重试。',
+    'plist.eyebrow':'参与者名单','plist.title':'已确认参与者',
+    'plist.count':n => n > 0 ? `<strong>${n}</strong> 位成员已回复` : '成为第一个确认参与的人！',
+    'plist.loading':'加载中…','plist.empty':'暂无参与者。',
+    'pbadge.pending':'待审核','pbadge.validated':'已验证','pbadge.invited':'已邀请',
     'footer.association':'ACTILC','footer.chinese':'喀麦隆汉语翻译和口译员协会','footer.rights':'版权所有',
   }
 };
@@ -753,9 +793,43 @@ function showFormError(msg) { const el = document.getElementById('formError'); e
 // Footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// Participant list
+async function loadPublicList() {
+  try {
+    const r = await fetch(`${BASE}/api/public-list.php`);
+    if (!r.ok) return;
+    const d = await r.json();
+    const countEl = document.getElementById('plistCount');
+    const gridEl  = document.getElementById('plistGrid');
+    const countFn = TRANSLATIONS[currentLang]['plist.count'] || TRANSLATIONS.fr['plist.count'];
+    countEl.innerHTML = countFn(d.total);
+    if (!d.participants.length) {
+      gridEl.innerHTML = `<div class="plist-empty">${t('plist.empty')}</div>`;
+      return;
+    }
+    const badges = {
+      pending:   ['pbadge-pending',   'pbadge.pending'],
+      validated: ['pbadge-validated', 'pbadge.validated'],
+      invited:   ['pbadge-invited',   'pbadge.invited'],
+    };
+    gridEl.innerHTML = d.participants.map(p => {
+      const [cls, key] = badges[p.status] || ['pbadge-pending','pbadge.pending'];
+      return `<div class="plist-item">
+        <div>
+          <div class="plist-name">${p.full_name}</div>
+          ${p.city ? `<div class="plist-city">${p.city}</div>` : ''}
+        </div>
+        <span class="pbadge ${cls}">${t(key)}</span>
+      </div>`;
+    }).join('');
+    initReveal();
+  } catch(e) {}
+}
+
 // Init
 applyTranslations();
 requestAnimationFrame(() => requestAnimationFrame(initReveal));
+loadPublicList();
 </script>
 </body>
 </html>
