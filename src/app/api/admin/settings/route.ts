@@ -3,13 +3,13 @@ import { prisma } from "@/lib/db";
 
 const DEFAULT: Parameters<typeof prisma.eventSettings.upsert>[0]["create"] = {
   id: "default",
-  title: "Conférence Annuelle des Traducteurs Chinois",
-  titleEn: "Annual Chinese Translators' Conference",
-  titleZh: "中文译者年会",
-  eventDate: "À confirmer",
-  eventLocation: "À confirmer",
+  title: "2ème Assemblée Générale de l'ACTILC",
+  titleEn: "2nd General Assembly of ACTILC",
+  titleZh: "ACTILC第二届全体大会",
+  eventDate: "Dimanche 27 décembre 2026 — 9h00 précise",
+  eventLocation: "Franco Hôtel, Yaoundé",
   totalRequired: 25000,
-  year: new Date().getFullYear(),
+  year: 2026,
 };
 
 export async function GET() {

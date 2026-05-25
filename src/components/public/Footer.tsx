@@ -15,7 +15,7 @@ export default function Footer({ t }: { t: Translations }) {
           className="text-sm font-light text-[#CCC] tracking-widest mb-1"
           style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
         >
-          Conférence Annuelle des Traducteurs Chinois
+          {t.footer.association}
         </p>
         <p className="text-xs text-[#666] tracking-[0.2em] mb-6">{t.footer.chinese}</p>
 

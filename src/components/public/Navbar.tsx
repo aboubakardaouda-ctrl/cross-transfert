@@ -47,7 +47,7 @@ export default function Navbar({
               className="text-sm font-light text-[#1A1A1A] tracking-wide hidden sm:block"
               style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
             >
-              中文译者年会
+              ACTILC
             </span>
           </a>
 
