@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#F5EFE6">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <!-- =============================================
+       EASY TO EDIT — Wedding Info
+       ============================================= -->
+  <title>A &amp; H — Invitation au Mariage</title>
+  <meta name="description" content="Vous êtes invité(e) au mariage de A &amp; H — 26 juin 2026, Garoua">
+
+  <!-- WhatsApp / Social preview -->
+  <meta property="og:title" content="A &amp; H — Invitation au Mariage 💍">
+  <meta property="og:description" content="Nous avons l'honneur de vous convier à la célébration de notre union. 26 juin 2026 — Garoua">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="og-image.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Animated background orbs (pure CSS) -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+  </div>
+
+  <!-- =============================================
+       HERO — Full-screen overlay
+       ============================================= -->
+  <section id="hero" class="hero" role="banner">
+    <div class="hero-inner">
+
+      <!-- Decorative pulse rings -->
+      <div class="ring ring-1" aria-hidden="true"></div>
+      <div class="ring ring-2" aria-hidden="true"></div>
+      <div class="ring ring-3" aria-hidden="true"></div>
+
+      <!-- Main floating glass card -->
+      <div class="invitation-card" id="invitationCard" role="presentation">
+        <div class="card-shine" aria-hidden="true"></div>
+
+        <div class="card-content">
+          <div class="card-line" aria-hidden="true"></div>
+
+          <p class="card-pretitle">Vous êtes invité(e)</p>
+
+          <!-- A&H — Engraved glass initials -->
+          <div class="initials-container" aria-label="A et H">
+            <h1 class="card-initials">A<span class="ampersand">&amp;</span>H</h1>
+          </div>
+
+          <p class="card-subtitle">Invitation au mariage</p>
+
+          <div class="card-line" aria-hidden="true"></div>
+
+          <!-- =============================================
+               EDIT: Wedding date & city
+               ============================================= -->
+          <p class="card-date">26 Juin 2026 &middot; Garoua</p>
+        </div>
+      </div>
+
+      <!-- CTA button -->
+      <button class="open-btn" id="openBtn" type="button" aria-label="Ouvrir et découvrir l'invitation">
+        <span class="open-btn-text">Ouvrir l'invitation</span>
+        <span class="open-btn-icon" aria-hidden="true">↓</span>
+      </button>
+
+      <p class="hero-hint" aria-hidden="true">Touchez pour découvrir</p>
+
+    </div>
+  </section>
+
+  <!-- =============================================
+       MAIN CONTENT — Revealed after hero
+       ============================================= -->
+  <main id="main-content" class="main-content">
+
+    <!-- ==========================================
+         SECTION 1 — Announce
+         ========================================== -->
+    <section class="section section-announce" aria-label="Annonce du mariage">
+      <div class="glass-card announce-card reveal">
+        <div class="announce-inner">
+          <!-- =============================================
+               EDIT: eyebrow label
+               ============================================= -->
+          <p class="section-eyebrow">Save the Date</p>
+
+          <!-- =============================================
+               EDIT: Couple initials / names
+               ============================================= -->
+          <div class="announce-names" aria-label="A et H">
+            <span class="name-a">A</span>
+            <span class="announce-and">&amp;</span>
+            <span class="name-h">H</span>
+          </div>
+          <p class="announce-tagline">se marient</p>
+
+          <div class="announce-divider" aria-hidden="true"></div>
+
+          <!-- =============================================
+               EDIT: Date
+               ============================================= -->
+          <div class="announce-date" aria-label="Le 26 juin 2026">
+            <span class="date-day">26</span>
+            <div class="date-details">
+              <span class="date-month">Juin</span>
+              <span class="date-year">2026</span>
+            </div>
+          </div>
+
+          <!-- =============================================
+               EDIT: City / country
+               ============================================= -->
+          <p class="announce-city">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            Garoua, Cameroun
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 2 — Programme
+         ========================================== -->
+    <section class="section section-programme" aria-label="Programme de la journée">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Déroulé de la journée</p>
+        <h2 class="section-title">Programme</h2>
+      </div>
+
+      <div class="programme-list" role="list">
+
+        <!-- =============================================
+             EDIT: Times and event names below
+             ============================================= -->
+
+        <div class="programme-item glass-card-sm reveal reveal-delay-1" role="listitem">
+          <div class="prog-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2l2 4h4l-3 3 1 5-4-2-4 2 1-5-3-3h4z" stroke-linejoin="round"/>
+              <line x1="12" y1="14" x2="12" y2="21" stroke-linecap="round"/>
+              <line x1="9" y1="18" x2="15" y2="18" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="prog-info">
+            <span class="prog-time">10 h 00</span>
+            <span class="prog-label">Cérémonie religieuse</span>
+          </div>
+        </div>
+
+        <div class="programme-connector" aria-hidden="true"></div>
+
+        <div class="programme-item glass-card-sm reveal reveal-delay-2" role="listitem">
+          <div class="prog-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M8 21h8M12 17v4M7 4v6a5 5 0 0010 0V4M5 4h14" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="prog-info">
+            <span class="prog-time">13 h 00</span>
+            <span class="prog-label">Réception</span>
+          </div>
+        </div>
+
+        <div class="programme-connector" aria-hidden="true"></div>
+
+        <div class="programme-item glass-card-sm reveal reveal-delay-3" role="listitem">
+          <div class="prog-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="6" y1="2" x2="6" y2="4" stroke-linecap="round"/>
+              <line x1="10" y1="2" x2="10" y2="4" stroke-linecap="round"/>
+              <line x1="14" y1="2" x2="14" y2="4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="prog-info">
+            <span class="prog-time">16 h 00</span>
+            <span class="prog-label">Dîner</span>
+          </div>
+        </div>
+
+        <div class="programme-connector" aria-hidden="true"></div>
+
+        <div class="programme-item glass-card-sm reveal reveal-delay-4" role="listitem">
+          <div class="prog-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 3v1M12 20v1M4.22 4.22l.7.7M18.36 18.36l.7.7M1 12h1M22 12h1M4.22 19.78l.7-.7M18.36 5.64l.7-.7" stroke-linecap="round"/>
+              <circle cx="12" cy="12" r="4"/>
+            </svg>
+          </div>
+          <div class="prog-info">
+            <span class="prog-time">20 h 00</span>
+            <span class="prog-label">Soirée &amp; festivités</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 3 — Lieu
+         ========================================== -->
+    <section class="section section-lieu" aria-label="Lieu de la cérémonie">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Rendez-vous</p>
+        <h2 class="section-title">Lieu</h2>
+      </div>
+
+      <div class="glass-card lieu-card reveal">
+        <div class="lieu-content">
+          <div class="lieu-icon-wrap" aria-hidden="true">
+            <svg class="lieu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+          </div>
+
+          <!-- =============================================
+               EDIT: Venue name and address
+               ============================================= -->
+          <h3 class="lieu-name">Salle des fêtes</h3>
+          <p class="lieu-address">À préciser — Garoua, Cameroun</p>
+
+          <!-- =============================================
+               EDIT: Replace the href with actual Google Maps URL
+               Example: https://maps.google.com/?q=Salle+des+fetes+Garoua
+               ============================================= -->
+          <a
+            href="https://maps.google.com/?q=Garoua,Cameroun"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-glass"
+            aria-label="Voir l'itinéraire sur Google Maps"
+          >
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Voir l'itinéraire
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 4 — RSVP
+         ========================================== -->
+    <section class="section section-rsvp" id="rsvpSection" aria-label="Confirmer votre présence">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Votre réponse</p>
+        <h2 class="section-title">RSVP</h2>
+        <!-- =============================================
+             EDIT: RSVP deadline date
+             ============================================= -->
+        <p class="section-subtitle">Merci de confirmer votre présence avant le <strong>1er juin 2026</strong></p>
+      </div>
+
+      <!-- RSVP Form card -->
+      <div class="glass-card rsvp-card reveal" id="rsvpCard">
+        <form id="rsvpForm" class="rsvp-form" novalidate>
+
+          <!-- Nom -->
+          <div class="form-group">
+            <label class="form-label" for="name">Nom complet <span class="required" aria-hidden="true">*</span></label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-input"
+              placeholder="Votre nom et prénom"
+              required
+              autocomplete="name"
+              aria-required="true"
+            >
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="form-group">
+            <label class="form-label" for="whatsapp">Numéro WhatsApp <span class="required" aria-hidden="true">*</span></label>
+            <input
+              type="tel"
+              id="whatsapp"
+              name="whatsapp"
+              class="form-input"
+              placeholder="+237 000 000 000"
+              required
+              autocomplete="tel"
+              aria-required="true"
+            >
+          </div>
+
+          <!-- Présence -->
+          <div class="form-group">
+            <p class="form-label" id="attendingLabel">Serez-vous présent(e) ? <span class="required" aria-hidden="true">*</span></p>
+            <div class="toggle-group" role="radiogroup" aria-labelledby="attendingLabel">
+              <label class="toggle-option">
+                <input type="radio" name="attending" value="oui" required aria-required="true">
+                <span class="toggle-btn">
+                  <span class="toggle-icon">✓</span> Oui, avec joie
+                </span>
+              </label>
+              <label class="toggle-option">
+                <input type="radio" name="attending" value="non">
+                <span class="toggle-btn">
+                  <span class="toggle-icon">✗</span> Je ne pourrai pas
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Accompagnants -->
+          <div class="form-group" id="guestsGroup">
+            <label class="form-label" for="guests">Nombre d'accompagnants</label>
+            <div class="number-input-wrap" role="group" aria-label="Nombre d'accompagnants">
+              <button type="button" class="number-btn" id="decreaseGuests" aria-label="Diminuer">−</button>
+              <input
+                type="number"
+                id="guests"
+                name="guests"
+                class="form-input number-input"
+                value="0"
+                min="0"
+                max="10"
+                readonly
+                aria-live="polite"
+              >
+              <button type="button" class="number-btn" id="increaseGuests" aria-label="Augmenter">+</button>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="form-group">
+            <label class="form-label" for="message">Un mot pour les mariés <span class="form-optional">(optionnel)</span></label>
+            <textarea
+              id="message"
+              name="message"
+              class="form-input form-textarea"
+              placeholder="Vos vœux, un message, une pensée..."
+              rows="3"
+            ></textarea>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn btn-primary" id="submitBtn">
+            <span class="btn-text">Confirmer ma présence</span>
+            <span class="btn-loader" hidden aria-hidden="true">
+              <span class="spinner"></span>
+            </span>
+          </button>
+
+        </form>
+      </div>
+
+      <!-- Success message (hidden until form is sent) -->
+      <div class="glass-card success-card" id="successCard" hidden aria-live="polite" role="status">
+        <div class="success-inner">
+          <div class="success-check-wrap" aria-hidden="true">
+            <div class="success-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="success-title">Merci !</h3>
+          <p class="success-message" id="successMessage">
+            Votre réponse a bien été enregistrée. Nous vous attendons avec impatience.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer class="footer reveal" role="contentinfo">
+      <div class="footer-inner">
+        <div class="footer-brand" aria-label="A et H">A&amp;H</div>
+        <p class="footer-date">26 &middot; 06 &middot; 2026</p>
+        <div class="footer-divider" aria-hidden="true"></div>
+        <p class="footer-quote">« L'amour est patient, l'amour est doux »</p>
+        <p class="footer-credit">Avec tout notre amour</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
