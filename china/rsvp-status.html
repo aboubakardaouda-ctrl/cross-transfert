@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mon statut RSVP — ACTILC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{min-height:100vh;background:linear-gradient(135deg,#FDFCF8 0%,#F2EAE0 100%);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#333}
+:root{--crimson:#8B1A1A;--gold:#C9A96E;--ivory:#FDFCF8}
+nav{background:var(--crimson);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:52px}
+.nav-brand{color:#fff;font-family:'Playfair Display',Georgia,serif;font-size:16px;font-weight:300;letter-spacing:3px;text-decoration:none}
+.nav-back{color:rgba(255,255,255,.7);font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:.2s}
+.nav-back:hover{color:#fff}
+.container{max-width:480px;margin:0 auto;padding:40px 20px}
+.card{background:#fff;border:1px solid #E8D5B0;border-radius:4px;padding:32px 24px;box-shadow:0 4px 24px rgba(0,0,0,.05)}
+h1{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:300;color:#1A1A1A;text-align:center;margin-bottom:6px}
+.sub{font-size:11px;color:#AAA;letter-spacing:2px;text-align:center;margin-bottom:28px}
+.ornament{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:28px;color:var(--gold);font-size:12px}
+.ornament-line{height:1px;width:40px;background:linear-gradient(90deg,transparent,var(--gold))}
+.ornament-line.right{background:linear-gradient(270deg,transparent,var(--gold))}
+.search-row{display:flex;gap:8px;margin-bottom:8px}
+input{flex:1;padding:11px 14px;border:1px solid #E0D5C0;border-radius:2px;font-size:14px;background:#FDFCF8;outline:none;transition:.2s}
+input:focus{border-color:var(--gold);background:#fff}
+.btn-search{padding:11px 20px;background:var(--crimson);color:#fff;border:none;border-radius:2px;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:.2s}
+.btn-search:hover{background:#6B1313}
+.hint{font-size:11px;color:#AAA;text-align:center;margin-bottom:24px}
+.result{display:none;border-top:1px solid #F0E8D0;padding-top:24px;margin-top:16px}
+.result-name{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:300;color:#1A1A1A;text-align:center;margin-bottom:4px}
+.result-tid{font-size:12px;color:var(--gold);letter-spacing:2px;text-align:center;margin-bottom:24px}
+.status-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:500;letter-spacing:1px;margin:0 auto 8px;display:flex;justify-content:center;width:fit-content}
+.status-pending{background:#FEF3C7;color:#92400E}
+.status-validated{background:#D1FAE5;color:#065F46}
+.status-invited{background:#DBEAFE;color:#1E40AF}
+.status-desc{font-size:12px;color:#888;text-align:center;margin-bottom:24px}
+.progress-section{margin-bottom:24px}
+.progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.progress-paid{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:300;color:var(--crimson)}
+.progress-pct{font-size:12px;color:#AAA}
+.progress-track{height:10px;background:#F0E8D0;border-radius:5px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--crimson));border-radius:5px;transition:.8s}
+.progress-footer{display:flex;justify-content:space-between;font-size:11px;color:#AAA;margin-top:4px}
+.invite-info{background:#FDF8F0;border:1px solid #E8D5B0;border-radius:3px;padding:14px;font-size:12px;color:#666;line-height:1.6;text-align:center}
+.invite-info.sent{background:#EFF6FF;border-color:#BFDBFE;color:#1E40AF}
+.not-found{text-align:center;color:#AAA;font-size:13px;padding:20px 0;display:none}
+.loading{text-align:center;color:#AAA;font-size:13px;padding:20px 0;display:none}
+.btn-back-link{display:block;text-align:center;margin-top:20px;color:var(--crimson);text-decoration:none;font-size:12px;letter-spacing:2px;text-transform:uppercase}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-back">← Accueil</a>
+  <a href="index.html" class="nav-brand">ACTILC</a>
+  <span style="width:80px"></span>
+</nav>
+
+<div class="container">
+  <div class="card">
+    <h1>Mon statut RSVP</h1>
+    <p class="sub">我的状态 · My Status</p>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <span>✦</span>
+      <div class="ornament-line right"></div>
+    </div>
+
+    <div class="search-row">
+      <input type="text" id="searchInput" placeholder="Email ou matricule ACTILC…">
+      <button class="btn-search" id="btnSearch">Rechercher</button>
+    </div>
+    <p class="hint">Saisissez votre adresse e-mail ou votre matricule ACTILC</p>
+
+    <div class="loading" id="loading">Recherche en cours…</div>
+    <div class="not-found" id="notFound">Aucun RSVP trouvé pour ces informations.</div>
+
+    <div class="result" id="result">
+      <div class="result-name" id="rName"></div>
+      <div class="result-tid" id="rTid"></div>
+      <div style="text-align:center">
+        <div class="status-badge" id="rBadge"></div>
+      </div>
+      <p class="status-desc" id="rStatusDesc"></p>
+      <div class="progress-section">
+        <div class="progress-header">
+          <span class="progress-paid" id="rPaid"></span>
+          <span class="progress-pct" id="rPct"></span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="rBar" style="width:0%"></div></div>
+        <div class="progress-footer">
+          <span>0 FCFA</span>
+          <span id="rTotal"></span>
+        </div>
+      </div>
+      <div class="invite-info" id="rInfo"></div>
+    </div>
+
+    <a href="index.html#rsvp" class="btn-back-link">Remplir le formulaire RSVP</a>
+  </div>
+</div>
+
+<script>
+function getApiBase() {
+  const url = new URL(window.location.href);
+  const parts = url.pathname.split('/').filter(Boolean);
+  const chinaIdx = parts.indexOf('china');
+  if (chinaIdx !== -1) return url.origin + '/' + parts.slice(0, chinaIdx+1).join('/');
+  return url.origin + url.pathname.replace(/\/[^/]*$/, '');
+}
+const BASE = getApiBase();
+
+const STATUS_INFO = {
+  pending: {
+    label: 'En attente',
+    cls: 'status-pending',
+    desc: 'Contribution incomplète — Invitation non encore disponible',
+    info: 'Votre dossier a bien été enregistré. Votre invitation sera envoyée dès que votre contribution de 25 000 FCFA sera entièrement réglée.',
+  },
+  validated: {
+    label: 'Validé ✓',
+    cls: 'status-validated',
+    desc: 'Contribution complète — Invitation en cours d\'envoi',
+    info: 'Votre contribution est complète ! Le secrétariat va envoyer votre invitation officielle très prochainement.',
+  },
+  invited: {
+    label: 'Invitation envoyée ✉',
+    cls: 'status-invited',
+    desc: 'Votre invitation ACTILC a été envoyée à votre adresse e-mail',
+    info: 'Votre invitation officielle a été envoyée par e-mail. Veuillez vérifier votre boîte de réception (et les spams). Présentez-la à l\'entrée le 27 décembre 2026.',
+    sentClass: true,
+  },
+};
+
+async function search() {
+  const q = document.getElementById('searchInput').value.trim();
+  if (!q) return;
+
+  document.getElementById('result').style.display   = 'none';
+  document.getElementById('notFound').style.display = 'none';
+  document.getElementById('loading').style.display  = 'block';
+
+  const isEmail = q.includes('@');
+  const param   = isEmail ? `email=${encodeURIComponent(q)}` : `translator_id=${encodeURIComponent(q)}`;
+
+  try {
+    const r = await fetch(`${BASE}/api/rsvp.php?${param}`);
+    document.getElementById('loading').style.display = 'none';
+
+    if (r.status === 404) {
+      document.getElementById('notFound').style.display = 'block';
+      return;
+    }
+    const d = await r.json();
+    const info = STATUS_INFO[d.status] || STATUS_INFO.pending;
+    const pct  = Math.min(100, Math.round(d.total_paid / d.total_required * 100));
+
+    document.getElementById('rName').textContent = d.full_name;
+    document.getElementById('rTid').textContent  = 'Matricule : ' + d.translator_id;
+    const badge = document.getElementById('rBadge');
+    badge.textContent  = info.label;
+    badge.className    = 'status-badge ' + info.cls;
+    document.getElementById('rStatusDesc').textContent = info.desc;
+    document.getElementById('rPaid').textContent = parseInt(d.total_paid).toLocaleString() + ' FCFA';
+    document.getElementById('rPct').textContent  = pct + '%';
+    document.getElementById('rBar').style.width  = pct + '%';
+    document.getElementById('rTotal').textContent = parseInt(d.total_required).toLocaleString() + ' FCFA';
+    const rInfo = document.getElementById('rInfo');
+    rInfo.textContent = info.info;
+    rInfo.className   = 'invite-info' + (info.sentClass ? ' sent' : '');
+
+    document.getElementById('result').style.display = 'block';
+  } catch {
+    document.getElementById('loading').style.display  = 'none';
+    document.getElementById('notFound').style.display = 'block';
+  }
+}
+
+document.getElementById('btnSearch').addEventListener('click', search);
+document.getElementById('searchInput').addEventListener('keydown', e => { if (e.key === 'Enter') search(); });
+
+// Pre-fill from URL param
+const urlParams = new URLSearchParams(window.location.search);
+const pre = urlParams.get('email') || urlParams.get('id');
+if (pre) { document.getElementById('searchInput').value = pre; search(); }
+</script>
+</body>
+</html>

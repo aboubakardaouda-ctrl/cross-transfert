@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="description" content="ACTILC — 2ème Assemblée Générale · 27 décembre 2026 · Franco Hôtel, Yaoundé">
+<title>ACTILC — 2ème Assemblée Générale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,700;1,300&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#333;background:#FDFCF8;overflow-x:hidden}
+:root{--crimson:#8B1A1A;--gold:#C9A96E;--ivory:#FDFCF8;--dark-gold:#B8914A;--light-gold:#E8D5B0}
+
+/* ===== NAVBAR ===== */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s,box-shadow .3s;padding:0 20px}
+#navbar.scrolled{background:rgba(253,252,248,0.96);backdrop-filter:blur(8px);box-shadow:0 2px 20px rgba(0,0,0,0.06);border-bottom:1px solid #F0E8D0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:54px;max-width:640px;margin:0 auto}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{width:28px;height:28px;background:var(--crimson);border-radius:3px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:14px;font-family:serif}
+.nav-logo-text{font-family:'Playfair Display',Georgia,serif;font-size:14px;font-weight:300;color:#1A1A1A;letter-spacing:2px}
+.nav-links{display:none}
+@media(min-width:640px){.nav-links{display:flex;gap:24px}}
+.nav-links a{font-size:11px;color:#666;text-decoration:none;letter-spacing:2px;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--crimson)}
+.nav-right{display:flex;align-items:center;gap:8px}
+.lang-btns{display:flex;gap:2px}
+.lang-btn{padding:5px 9px;border:1px solid #E0D5C0;background:#fff;font-size:11px;cursor:pointer;color:#888;border-radius:2px;transition:.2s;letter-spacing:1px}
+.lang-btn.active{background:var(--crimson);color:#fff;border-color:var(--crimson)}
+.hamburger{display:flex;flex-direction:column;gap:4px;cursor:pointer;padding:6px;border:none;background:none}
+.hamburger span{display:block;width:18px;height:1.5px;background:#555;transition:.3s}
+@media(min-width:640px){.hamburger{display:none}}
+
+/* Mobile menu */
+#mobileMenu{position:fixed;inset:0;z-index:99;background:rgba(253,252,248,0.98);display:none;flex-direction:column;align-items:center;justify-content:center;gap:28px}
+#mobileMenu.open{display:flex}
+#mobileMenu a{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:300;color:#1A1A1A;text-decoration:none;letter-spacing:4px;text-transform:uppercase}
+#mobileMenu a:hover{color:var(--crimson)}
+
+/* ===== HERO ===== */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse at 20% 50%,rgba(139,26,26,.07) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(201,169,110,.09) 0%,transparent 50%),linear-gradient(180deg,#FDFCF8 0%,#F8F3EC 60%,#F2EAE0 100%)}
+.hero-top-line{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--crimson),transparent)}
+.corner{position:absolute;width:40px;height:40px;opacity:.3}
+.corner-tl{top:40px;left:20px;border-top:1px solid var(--gold);border-left:1px solid var(--gold)}
+.corner-tr{top:40px;right:20px;border-top:1px solid var(--gold);border-right:1px solid var(--gold)}
+.corner-bl{bottom:40px;left:20px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold)}
+.corner-br{bottom:40px;right:20px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:100px 24px 80px;max-width:520px;width:100%}
+.hero-edition{display:inline-flex;align-items:center;gap:10px;margin-bottom:24px}
+.hero-edition-line{width:32px;height:1px;background:var(--gold)}
+.hero-edition-text{font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;font-weight:300}
+.hero-emblem{width:80px;height:80px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;position:relative;box-shadow:0 0 0 6px rgba(201,169,110,.08),0 0 0 12px rgba(201,169,110,.04)}
+.hero-emblem::before{content:'';position:absolute;inset:7px;border-radius:50%;border:1px solid #E8D5B0;opacity:.6}
+.hero-emblem-char{font-size:28px;color:var(--crimson);font-family:serif;position:relative;z-index:1}
+.hero-title{font-family:'Playfair Display',Georgia,serif;font-size:56px;font-weight:300;letter-spacing:8px;color:var(--crimson);margin-bottom:8px}
+.hero-fullname{font-size:11px;color:#888;letter-spacing:2px;line-height:1.6;margin-bottom:6px;padding:0 16px;text-transform:uppercase}
+.hero-chinese{font-size:12px;color:#AAA;letter-spacing:3px;margin-bottom:24px;font-family:'Cormorant Garamond',Georgia,serif}
+.ornament{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 auto 28px;color:var(--gold);font-size:13px}
+.ornament-line{height:1px;width:48px;background:linear-gradient(90deg,transparent,var(--gold))}
+.ornament-line.right{background:linear-gradient(270deg,transparent,var(--gold))}
+.hero-tagline{font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;color:#444;line-height:1.6;font-style:italic;margin-bottom:36px;padding:0 8px}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;background:var(--crimson);color:#fff;padding:15px 32px;font-size:11px;letter-spacing:3px;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:.2s;min-width:260px;justify-content:center}
+.hero-cta:hover{background:#6B1313}
+.hero-cta svg{flex-shrink:0}
+.hero-cta-sub{font-size:11px;color:#AAA;letter-spacing:1px;margin-top:12px;display:block}
+.scroll-indicator{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.3}
+.scroll-line{width:1px;height:32px;background:var(--gold);animation:scrollAnim 1.6s ease-in-out infinite}
+@keyframes scrollAnim{0%,100%{transform:scaleY(1);opacity:.3}50%{transform:scaleY(.5);opacity:.8}}
+
+/* ===== SECTIONS ===== */
+section{padding:64px 20px}
+.section-inner{max-width:520px;margin:0 auto}
+.section-eyebrow{font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;text-align:center;display:block;margin-bottom:12px}
+.section-title{font-family:'Playfair Display',Georgia,serif;font-size:24px;font-weight:300;letter-spacing:2px;color:#1A1A1A;text-align:center;margin-bottom:16px;line-height:1.3}
+
+/* ===== EVENT SECTION ===== */
+#event{background:#FDFCF8}
+.event-desc{font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;color:#555;line-height:1.7;text-align:center;margin-bottom:24px;font-weight:300}
+.theme-box{border:1px solid var(--light-gold);background:#FDF8F0;border-radius:2px;padding:18px 20px 18px 24px;margin-bottom:24px;position:relative;overflow:hidden}
+.theme-box::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--crimson)}
+.theme-label{font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.theme-text{font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;color:#333;line-height:1.6;font-style:italic}
+.info-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
+.info-card{background:#fff;border:1px solid #F0E8D0;border-radius:3px;padding:14px 8px;text-align:center;box-shadow:0 1px 6px rgba(201,169,110,.08)}
+.info-card-icon{font-size:18px;color:var(--gold);margin-bottom:6px}
+.info-card-label{font-size:10px;color:#AAA;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.info-card-value{font-size:12px;color:#333;font-weight:500;line-height:1.3}
+.highlights{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.highlight{display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid #F0E8D0;border-radius:3px;padding:14px;box-shadow:0 1px 8px rgba(201,169,110,.07)}
+.highlight-icon{width:36px;height:36px;background:#FDF8F0;border-radius:50%;border:1px solid #E8D5B0;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.highlight-title{font-size:13px;font-weight:600;color:#1A1A1A;margin-bottom:3px}
+.highlight-desc{font-size:12px;color:#777;line-height:1.5;font-weight:300}
+.contribution-box{border-radius:3px;padding:28px 20px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--crimson) 0%,#6B1313 100%);box-shadow:0 8px 32px rgba(139,26,26,.25)}
+.contribution-box::before,.contribution-box::after{content:'';position:absolute;width:16px;height:16px;border-color:rgba(201,169,110,.5);border-style:solid}
+.contribution-box::before{top:12px;left:12px;border-width:1px 0 0 1px}
+.contribution-box::after{bottom:12px;right:12px;border-width:0 1px 1px 0}
+.contribution-label{font-size:10px;letter-spacing:4px;color:#E8D5B0;text-transform:uppercase;margin-bottom:8px}
+.contribution-amount{font-family:'Playfair Display',Georgia,serif;font-size:40px;font-weight:300;color:#fff;margin-bottom:4px}
+.contribution-note{font-size:11px;color:#E8D5B0;opacity:.8}
+
+/* ===== WHY RSVP ===== */
+#why{background:#F8F3EC}
+.why-intro{font-size:14px;color:#666;text-align:center;line-height:1.7;margin-bottom:28px}
+.why-points{display:flex;flex-direction:column;gap:12px}
+.why-point{display:flex;gap:14px;background:#fff;border:1px solid #F0E8D0;border-radius:3px;padding:16px;box-shadow:0 1px 6px rgba(0,0,0,.03)}
+.why-num{width:28px;height:28px;background:var(--crimson);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-family:'Playfair Display',serif;flex-shrink:0}
+.why-point-title{font-size:13px;font-weight:600;color:#1A1A1A;margin-bottom:3px}
+.why-point-desc{font-size:12px;color:#777;line-height:1.5;font-weight:300}
+
+/* ===== HOW IT WORKS ===== */
+#how{background:#FDFCF8}
+.steps{display:flex;flex-direction:column;gap:0}
+.step{display:flex;gap:16px;position:relative;padding-bottom:20px}
+.step:last-child{padding-bottom:0}
+.step-left{display:flex;flex-direction:column;align-items:center}
+.step-num{width:32px;height:32px;background:var(--crimson);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-family:'Playfair Display',serif;flex-shrink:0;position:relative;z-index:1}
+.step-line{width:1px;flex:1;background:linear-gradient(180deg,var(--light-gold),transparent);margin-top:4px}
+.step:last-child .step-line{display:none}
+.step-title{font-size:13px;font-weight:600;color:#1A1A1A;margin-bottom:4px;padding-top:6px}
+.step-desc{font-size:12px;color:#777;line-height:1.5}
+
+/* ===== RSVP FORM ===== */
+#rsvp{background:#F8F3EC}
+.form-card{background:#fff;border:1px solid #E8D5B0;border-radius:4px;padding:28px 24px;box-shadow:0 4px 24px rgba(0,0,0,.05)}
+.form-subtitle{font-size:13px;color:#888;text-align:center;margin-bottom:24px;line-height:1.6}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:11px;color:#888;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:11px 14px;border:1px solid #E0D5C0;border-radius:2px;font-size:14px;color:#333;background:#FDFCF8;outline:none;transition:.2s;font-family:inherit}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--gold);background:#fff}
+.form-group .error-msg{font-size:11px;color:#B91C1C;margin-top:4px;display:none}
+.radio-group{display:flex;flex-direction:column;gap:8px}
+.radio-label{display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 14px;border:1px solid #E0D5C0;border-radius:2px;transition:.2s;font-size:13px;color:#555}
+.radio-label:hover{border-color:var(--gold)}
+.radio-label input{width:auto;margin:0}
+.btn-submit{width:100%;padding:14px;background:var(--crimson);color:#fff;border:none;border-radius:2px;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:.2s;margin-top:8px;font-family:inherit}
+.btn-submit:hover{background:#6B1313}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed}
+.form-error{background:#FEE2E2;border:1px solid #FCA5A5;border-radius:2px;padding:12px 14px;font-size:12px;color:#B91C1C;margin-top:12px;display:none}
+.success-box{text-align:center;padding:32px 16px;display:none}
+.success-icon{width:56px;height:56px;background:#D1FAE5;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:22px;color:#065F46}
+.success-title{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:300;color:#1A1A1A;margin-bottom:12px}
+.success-desc{font-size:13px;color:#666;line-height:1.7;margin-bottom:20px}
+.btn-status{display:inline-block;padding:10px 24px;border:1px solid var(--crimson);color:var(--crimson);border-radius:2px;text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;transition:.2s}
+.btn-status:hover{background:var(--crimson);color:#fff}
+
+/* ===== FOOTER ===== */
+footer{background:#1A1A1A;color:#fff;padding:48px 24px}
+.footer-inner{max-width:520px;margin:0 auto;text-align:center}
+.footer-logo{width:40px;height:40px;border:1px solid var(--gold);border-radius:3px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:18px;color:var(--gold)}
+.footer-name{font-family:'Playfair Display',Georgia,serif;font-size:13px;font-weight:300;color:#CCC;letter-spacing:3px;margin-bottom:4px}
+.footer-sub{font-size:11px;color:#666;letter-spacing:2px;margin-bottom:24px}
+.footer-divider{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:24px}
+.footer-divider-line{height:1px;width:48px;background:#333}
+.footer-divider-dot{width:3px;height:3px;border-radius:50%;background:var(--gold)}
+.footer-copy{font-size:11px;color:#555;letter-spacing:1px}
+
+/* ===== REVEAL ANIMATION ===== */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-20px);transition:opacity .6s ease,transform .6s ease}
+.reveal-left.visible{opacity:1;transform:none}
+
+/* ===== UTILITIES ===== */
+@media(max-width:400px){
+  .hero-title{font-size:42px;letter-spacing:5px}
+  .info-cards{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">中</div>
+      <span class="nav-logo-text">ACTILC</span>
+    </a>
+    <div class="nav-links">
+      <a href="#event" data-i18n="nav.event"></a>
+      <a href="#why" data-i18n="nav.why"></a>
+      <a href="#rsvp" data-i18n="nav.rsvp"></a>
+      <a href="rsvp-status.html" data-i18n="nav.status"></a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-btns">
+        <button class="lang-btn active" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="zh">中</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu">
+  <a href="#event" class="menu-link" data-i18n="nav.event"></a>
+  <a href="#why" class="menu-link" data-i18n="nav.why"></a>
+  <a href="#rsvp" class="menu-link" data-i18n="nav.rsvp"></a>
+  <a href="rsvp-status.html" class="menu-link" data-i18n="nav.status"></a>
+  <div class="lang-btns" style="margin-top:16px">
+    <button class="lang-btn" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="zh">中</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-top-line"></div>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+  <div class="hero-content">
+    <div class="hero-edition reveal">
+      <div class="hero-edition-line"></div>
+      <span class="hero-edition-text" data-i18n="hero.subtitle"></span>
+      <div class="hero-edition-line"></div>
+    </div>
+    <div class="hero-emblem reveal" style="transition-delay:.15s">
+      <span class="hero-emblem-char">中</span>
+    </div>
+    <h1 class="hero-title reveal" style="transition-delay:.3s">ACTILC</h1>
+    <p class="hero-fullname reveal" style="transition-delay:.4s" data-i18n="hero.titleFull"></p>
+    <p class="hero-chinese reveal" style="transition-delay:.5s" data-i18n="hero.chinese"></p>
+    <div class="ornament reveal" style="transition-delay:.55s">
+      <div class="ornament-line"></div>
+      <span>✦</span>
+      <div class="ornament-line right"></div>
+    </div>
+    <p class="hero-tagline reveal" style="transition-delay:.6s">« <span data-i18n="hero.tagline"></span> »</p>
+    <div class="reveal" style="transition-delay:.75s">
+      <a href="#rsvp" class="hero-cta">
+        <span data-i18n="hero.cta"></span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <span class="hero-cta-sub" data-i18n="hero.ctaSub"></span>
+    </div>
+  </div>
+  <div class="scroll-indicator"><div class="scroll-line"></div></div>
+</section>
+
+<!-- EVENT -->
+<section id="event">
+  <div class="section-inner">
+    <span class="section-eyebrow reveal" data-i18n="event.eyebrow"></span>
+    <h2 class="section-title reveal" data-i18n="event.title"></h2>
+    <div class="ornament reveal"><div class="ornament-line"></div><span>✦</span><div class="ornament-line right"></div></div>
+    <p class="event-desc reveal" data-i18n="event.description"></p>
+    <div class="theme-box reveal">
+      <p class="theme-label" data-i18n="event.themeLabel"></p>
+      <p class="theme-text">« <span data-i18n="event.theme"></span> »</p>
+    </div>
+    <div class="info-cards reveal">
+      <div class="info-card">
+        <div class="info-card-icon">◷</div>
+        <div class="info-card-label" data-i18n="event.dateLabel"></div>
+        <div class="info-card-value" data-i18n="event.date"></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">◎</div>
+        <div class="info-card-label" data-i18n="event.timeLabel"></div>
+        <div class="info-card-value" data-i18n="event.time"></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">◇</div>
+        <div class="info-card-label" data-i18n="event.locationLabel"></div>
+        <div class="info-card-value" data-i18n="event.location"></div>
+      </div>
+    </div>
+    <div class="highlights">
+      <div class="highlight reveal-left" style="transition-delay:0s">
+        <div class="highlight-icon"><svg width="18" height="18" viewBox="0 0 22 22" fill="none"><path d="M11 2L13.5 8H20L14.5 12L16.5 18.5L11 14.5L5.5 18.5L7.5 12L2 8H8.5L11 2Z" stroke="#8B1A1A" stroke-width="1.3" stroke-linejoin="round"/></svg></div>
+        <div><div class="highlight-title" data-i18n="event.h1Title"></div><div class="highlight-desc" data-i18n="event.h1"></div></div>
+      </div>
+      <div class="highlight reveal-left" style="transition-delay:.08s">
+        <div class="highlight-icon"><svg width="18" height="18" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8.5" stroke="#8B1A1A" stroke-width="1.3"/><path d="M11 6v5.5l3.5 2.5" stroke="#C9A96E" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+        <div><div class="highlight-title" data-i18n="event.h2Title"></div><div class="highlight-desc" data-i18n="event.h2"></div></div>
+      </div>
+      <div class="highlight reveal-left" style="transition-delay:.16s">
+        <div class="highlight-icon"><svg width="18" height="18" viewBox="0 0 22 22" fill="none"><path d="M16 8v-2a5 5 0 00-10 0v2M4 8h14l1 12H3L4 8z" stroke="#8B1A1A" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="highlight-title" data-i18n="event.h3Title"></div><div class="highlight-desc" data-i18n="event.h3"></div></div>
+      </div>
+    </div>
+    <div class="contribution-box reveal">
+      <p class="contribution-label" data-i18n="event.contribution"></p>
+      <p class="contribution-amount">25 000 FCFA</p>
+      <p class="contribution-note" data-i18n="event.contributionNote"></p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY RSVP -->
+<section id="why">
+  <div class="section-inner">
+    <span class="section-eyebrow reveal" data-i18n="why.eyebrow"></span>
+    <h2 class="section-title reveal" data-i18n="why.title"></h2>
+    <div class="ornament reveal"><div class="ornament-line"></div><span>✦</span><div class="ornament-line right"></div></div>
+    <p class="why-intro reveal" data-i18n="why.intro"></p>
+    <div class="why-points">
+      <div class="why-point reveal" style="transition-delay:.05s">
+        <div class="why-num">1</div>
+        <div><div class="why-point-title" data-i18n="why.p1Title"></div><div class="why-point-desc" data-i18n="why.p1"></div></div>
+      </div>
+      <div class="why-point reveal" style="transition-delay:.1s">
+        <div class="why-num">2</div>
+        <div><div class="why-point-title" data-i18n="why.p2Title"></div><div class="why-point-desc" data-i18n="why.p2"></div></div>
+      </div>
+      <div class="why-point reveal" style="transition-delay:.15s">
+        <div class="why-num">3</div>
+        <div><div class="why-point-title" data-i18n="why.p3Title"></div><div class="why-point-desc" data-i18n="why.p3"></div></div>
+      </div>
+      <div class="why-point reveal" style="transition-delay:.2s">
+        <div class="why-num">4</div>
+        <div><div class="why-point-title" data-i18n="why.p4Title"></div><div class="why-point-desc" data-i18n="why.p4"></div></div>
+      </div>
+      <div class="why-point reveal" style="transition-delay:.25s">
+        <div class="why-num">5</div>
+        <div><div class="why-point-title" data-i18n="why.p5Title"></div><div class="why-point-desc" data-i18n="why.p5"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-inner">
+    <span class="section-eyebrow reveal" data-i18n="how.eyebrow"></span>
+    <h2 class="section-title reveal" data-i18n="how.title"></h2>
+    <div class="ornament reveal" style="margin-bottom:32px"><div class="ornament-line"></div><span>✦</span><div class="ornament-line right"></div></div>
+    <div class="steps" id="stepsContainer"></div>
+  </div>
+</section>
+
+<!-- RSVP FORM -->
+<section id="rsvp">
+  <div class="section-inner">
+    <span class="section-eyebrow reveal" data-i18n="form.eyebrow"></span>
+    <h2 class="section-title reveal" data-i18n="form.title"></h2>
+    <div class="ornament reveal"><div class="ornament-line"></div><span>✦</span><div class="ornament-line right"></div></div>
+    <div class="form-card reveal">
+      <p class="form-subtitle" data-i18n="form.subtitle"></p>
+      <div id="formSuccess" class="success-box">
+        <div class="success-icon">✓</div>
+        <h3 class="success-title" data-i18n="form.successTitle"></h3>
+        <p class="success-desc" data-i18n="form.successDesc"></p>
+        <a href="rsvp-status.html" class="btn-status" data-i18n="form.statusLink"></a>
+      </div>
+      <form id="rsvpForm">
+        <div class="form-group">
+          <label data-i18n="form.fullName"></label>
+          <input type="text" id="fullName" data-i18n-placeholder="form.fullNamePh">
+          <div class="error-msg" id="err-fullName" data-i18n="form.required"></div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="form.email"></label>
+          <input type="email" id="email" data-i18n-placeholder="form.emailPh">
+          <div class="error-msg" id="err-email" data-i18n="form.invalidEmail"></div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="form.phone"></label>
+          <input type="tel" id="phone" placeholder="+237 6XX XXX XXX">
+        </div>
+        <div class="form-group">
+          <label data-i18n="form.translatorId"></label>
+          <input type="text" id="translatorId" data-i18n-placeholder="form.translatorIdPh">
+          <div class="error-msg" id="err-translatorId" data-i18n="form.required"></div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="form.city"></label>
+          <input type="text" id="city" data-i18n-placeholder="form.cityPh">
+        </div>
+        <div class="form-group">
+          <label data-i18n="form.participates"></label>
+          <div class="radio-group">
+            <label class="radio-label"><input type="radio" name="participates" value="1" checked> <span data-i18n="form.participatesYes"></span></label>
+            <label class="radio-label"><input type="radio" name="participates" value="0"> <span data-i18n="form.participatesNo"></span></label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="form.comment"></label>
+          <textarea id="comment" rows="3" data-i18n-placeholder="form.commentPh"></textarea>
+        </div>
+        <div class="form-error" id="formError"></div>
+        <button type="submit" class="btn-submit" id="btnSubmit">
+          <span data-i18n="form.submit"></span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">中</div>
+    <p class="footer-name" data-i18n="footer.association"></p>
+    <p class="footer-sub" data-i18n="footer.chinese"></p>
+    <div class="footer-divider">
+      <div class="footer-divider-line"></div>
+      <div class="footer-divider-dot"></div>
+      <div class="footer-divider-line"></div>
+    </div>
+    <p class="footer-copy">© <span id="year"></span> billetinvitation.site · <span data-i18n="footer.rights"></span></p>
+  </div>
+</footer>
+
+<script>
+// ===== TRANSLATIONS =====
+const TRANSLATIONS = {
+  fr: {
+    'nav.event':'L\'Assemblée','nav.why':'Pourquoi le RSVP','nav.rsvp':'Confirmer','nav.status':'Mon statut',
+    'hero.subtitle':'2ème Assemblée Générale · 27 décembre 2026',
+    'hero.titleFull':'ASSOCIATION CAMEROUNAISE DES TRADUCTEURS ET INTERPRÈTES DE LANGUE CHINOISE',
+    'hero.chinese':'喀麦隆汉语翻译和口译员协会',
+    'hero.tagline':'Tous unis pour la professionnalisation et la protection sociale du traducteur et interprète de langue chinoise',
+    'hero.cta':'Confirmer ma participation',
+    'hero.ctaSub':'Participation sur invitation — Contribution de 25 000 FCFA',
+    'event.eyebrow':'关于大会','event.title':'L\'Assemblée Générale',
+    'event.description':'L\'ACTILC — Association Camerounaise des Traducteurs et Interprètes de Langue Chinoise — vous convie à sa 2ème Assemblée Générale. Un moment fort de rassemblement, d\'échanges professionnels et de réflexion collective autour de l\'avenir de notre métier.',
+    'event.themeLabel':'Thème de la 2ème édition',
+    'event.theme':'Tous unis pour la professionnalisation et la protection sociale du traducteur et interprète de langue chinoise',
+    'event.dateLabel':'Date','event.date':'Dimanche 27 décembre 2026',
+    'event.timeLabel':'Heure','event.time':'9h00 précise',
+    'event.locationLabel':'Lieu','event.location':'Franco Hôtel, Yaoundé',
+    'event.h1Title':'Professionnalisation','event.h1':'Réflexion collective sur les standards et la reconnaissance professionnelle de nos métiers',
+    'event.h2Title':'Protection sociale','event.h2':'Débat et propositions concrètes pour la protection sociale des traducteurs et interprètes',
+    'event.h3Title':'Unité & Réseau','event.h3':'Renforcer les liens au sein de la communauté ACTILC et valoriser notre expertise',
+    'event.contribution':'Contribution de participation','event.contributionNote':'par membre · obligatoire pour recevoir l\'invitation officielle',
+    'why.eyebrow':'为什么要填写回执？','why.title':'Pourquoi remplir le RSVP ?',
+    'why.intro':'Le formulaire RSVP est la première étape obligatoire pour être enregistré et pris en compte dans l\'organisation de l\'Assemblée Générale.',
+    'why.p1Title':'L\'inscription est obligatoire','why.p1':'Sans RSVP rempli, votre dossier ne peut pas être ouvert et vous ne pourrez pas recevoir votre invitation officielle.',
+    'why.p2Title':'Le RSVP seul ne suffit pas','why.p2':'Remplir le formulaire confirme votre intérêt, mais ne garantit pas encore votre place. La validation finale dépend du règlement de votre contribution.',
+    'why.p3Title':'La contribution conditionne l\'invitation','why.p3':'L\'invitation électronique officielle n\'est envoyée qu\'après réception et validation complète des 25 000 FCFA de contribution.',
+    'why.p4Title':'Paiement en plusieurs fois accepté','why.p4':'Votre contribution peut être versée en plusieurs tranches. L\'administrateur suit chaque versement jusqu\'à atteindre le montant total.',
+    'why.p5Title':'Invitation nominative et personnalisée','why.p5':'Une fois validée, vous recevez par e-mail une invitation PDF nominative au nom de l\'ACTILC, strictement personnelle.',
+    'how.eyebrow':'流程说明','how.title':'Comment ça fonctionne ?',
+    'how.steps':[
+      {t:'Vous remplissez le RSVP',d:'Complétez le formulaire avec vos informations personnelles et votre matricule ACTILC.'},
+      {t:'L\'administrateur reçoit votre dossier',d:'Votre RSVP est immédiatement notifié au secrétariat de l\'ACTILC.'},
+      {t:'Les versements sont enregistrés',d:'Le secrétariat enregistre manuellement chaque versement de contribution que vous effectuez.'},
+      {t:'Suivi de votre contribution',d:'Votre dossier reste en attente tant que le total versé n\'atteint pas 25 000 FCFA.'},
+      {t:'Validation du dossier',d:'Dès que votre contribution atteint 25 000 FCFA, votre dossier est automatiquement validé.'},
+      {t:'Envoi de votre invitation',d:'Le secrétariat déclenche l\'envoi de votre invitation officielle personnalisée.'},
+      {t:'Vous recevez votre invitation',d:'Votre invitation nominative officielle ACTILC arrive dans votre boîte e-mail, prête à présenter.'},
+    ],
+    'form.eyebrow':'确认表格','form.title':'Formulaire de confirmation',
+    'form.subtitle':'Remplissez vos informations pour enregistrer votre participation à l\'Assemblée Générale.',
+    'form.fullName':'Nom complet','form.fullNamePh':'Votre nom et prénom',
+    'form.email':'Adresse e-mail','form.emailPh':'votre@email.com',
+    'form.phone':'Numéro de téléphone',
+    'form.translatorId':'Matricule ACTILC','form.translatorIdPh':'Votre numéro de membre',
+    'form.city':'Ville / Localisation','form.cityPh':'Votre ville',
+    'form.participates':'Confirmez-vous votre participation ?',
+    'form.participatesYes':'Oui, je confirme ma participation',
+    'form.participatesNo':'Non, je ne pourrai pas participer',
+    'form.comment':'Message ou commentaire (facultatif)','form.commentPh':'Un message pour le secrétariat…',
+    'form.submit':'Envoyer ma confirmation','form.submitting':'Envoi en cours…',
+    'form.successTitle':'Votre RSVP a été enregistré !',
+    'form.successDesc':'Merci pour votre confirmation. Le secrétariat de l\'ACTILC a été notifié. Votre invitation officielle vous sera envoyée par e-mail dès validation complète de votre contribution de 25 000 FCFA.',
+    'form.statusLink':'Suivre mon statut →',
+    'form.required':'Ce champ est obligatoire','form.invalidEmail':'Adresse e-mail invalide',
+    'form.duplicate':'Un RSVP avec cet e-mail ou ce matricule existe déjà.',
+    'form.error':'Une erreur est survenue. Veuillez réessayer.',
+    'footer.association':'ACTILC','footer.chinese':'喀麦隆汉语翻译和口译员协会','footer.rights':'Tous droits réservés',
+  },
+  en: {
+    'nav.event':'The Assembly','nav.why':'Why RSVP','nav.rsvp':'Confirm','nav.status':'My Status',
+    'hero.subtitle':'2nd General Assembly · December 27, 2026',
+    'hero.titleFull':'CAMEROONIAN ASSOCIATION OF CHINESE LANGUAGE TRANSLATORS AND INTERPRETERS',
+    'hero.chinese':'喀麦隆汉语翻译和口译员协会',
+    'hero.tagline':'United for the professionalization and social protection of the Chinese language translator and interpreter',
+    'hero.cta':'Confirm My Attendance',
+    'hero.ctaSub':'By invitation only — 25,000 FCFA contribution required',
+    'event.eyebrow':'关于大会','event.title':'The General Assembly',
+    'event.description':'ACTILC — the Cameroonian Association of Chinese Language Translators and Interpreters — invites you to its 2nd General Assembly. A key moment for gathering, professional exchanges and collective reflection on the future of our profession.',
+    'event.themeLabel':'Theme of the 2nd edition',
+    'event.theme':'United for the professionalization and social protection of the Chinese language translator and interpreter',
+    'event.dateLabel':'Date','event.date':'Sunday, December 27, 2026',
+    'event.timeLabel':'Time','event.time':'9:00 AM sharp',
+    'event.locationLabel':'Venue','event.location':'Franco Hotel, Yaoundé',
+    'event.h1Title':'Professionalization','event.h1':'Collective reflection on standards and professional recognition of our trades',
+    'event.h2Title':'Social Protection','event.h2':'Debate and concrete proposals for the social protection of translators and interpreters',
+    'event.h3Title':'Unity & Network','event.h3':'Strengthening bonds within the ACTILC community and showcasing our expertise',
+    'event.contribution':'Participation Contribution','event.contributionNote':'per member · required to receive the official invitation',
+    'why.eyebrow':'为什么要填写回执？','why.title':'Why Fill Out the RSVP?',
+    'why.intro':'The RSVP form is the mandatory first step to be registered and included in the General Assembly organization.',
+    'why.p1Title':'Registration is mandatory','why.p1':'Without a completed RSVP, your file cannot be opened and you will not be able to receive your official invitation.',
+    'why.p2Title':'RSVP alone is not enough','why.p2':'Completing the form confirms your interest, but does not yet guarantee your place. Final validation depends on your contribution payment.',
+    'why.p3Title':'Contribution determines the invitation','why.p3':'The official electronic invitation is only sent after full receipt and validation of the 25,000 FCFA contribution.',
+    'why.p4Title':'Installment payment accepted','why.p4':'Your contribution can be paid in several installments. The secretariat tracks each payment until the total amount is reached.',
+    'why.p5Title':'Personalized and official invitation','why.p5':'Once validated, you will receive by email a personalized PDF invitation in ACTILC\'s name, strictly personal.',
+    'how.eyebrow':'流程说明','how.title':'How Does It Work?',
+    'how.steps':[
+      {t:'You complete the RSVP',d:'Fill out the form with your personal information and ACTILC membership number.'},
+      {t:'Secretariat receives your file',d:'Your RSVP is immediately notified to the ACTILC secretariat.'},
+      {t:'Payments are recorded',d:'The secretariat manually records each contribution payment you make.'},
+      {t:'Track your contribution',d:'Your file remains pending until the total paid reaches 25,000 FCFA.'},
+      {t:'File validation',d:'As soon as your contribution reaches 25,000 FCFA, your file is automatically validated.'},
+      {t:'Invitation is sent',d:'The secretariat triggers the sending of your official personalized invitation.'},
+      {t:'You receive your invitation',d:'Your official ACTILC invitation arrives in your email inbox, ready to present.'},
+    ],
+    'form.eyebrow':'确认表格','form.title':'Confirmation Form',
+    'form.subtitle':'Fill in your information to register your attendance at the General Assembly.',
+    'form.fullName':'Full Name','form.fullNamePh':'Your first and last name',
+    'form.email':'Email Address','form.emailPh':'your@email.com',
+    'form.phone':'Phone Number',
+    'form.translatorId':'ACTILC Membership Number','form.translatorIdPh':'Your member number',
+    'form.city':'City / Location','form.cityPh':'Your city',
+    'form.participates':'Do you confirm your attendance?',
+    'form.participatesYes':'Yes, I confirm my attendance',
+    'form.participatesNo':'No, I will not be able to attend',
+    'form.comment':'Message or comment (optional)','form.commentPh':'A message for the secretariat…',
+    'form.submit':'Send My Confirmation','form.submitting':'Sending…',
+    'form.successTitle':'Your RSVP has been registered!',
+    'form.successDesc':'Thank you for your confirmation. The ACTILC secretariat has been notified. Your official invitation will be sent by email once your 25,000 FCFA contribution is fully validated.',
+    'form.statusLink':'Track my status →',
+    'form.required':'This field is required','form.invalidEmail':'Invalid email address',
+    'form.duplicate':'An RSVP with this email or membership number already exists.',
+    'form.error':'An error occurred. Please try again.',
+    'footer.association':'ACTILC','footer.chinese':'喀麦隆汉语翻译和口译员协会','footer.rights':'All rights reserved',
+  },
+  zh: {
+    'nav.event':'关于大会','nav.why':'为什么RSVP','nav.rsvp':'确认参加','nav.status':'我的状态',
+    'hero.subtitle':'第二届全体大会 · 2026年12月27日',
+    'hero.titleFull':'喀麦隆汉语翻译和口译员协会',
+    'hero.chinese':'Association Camerounaise des Traducteurs et Interprètes de Langue Chinoise',
+    'hero.tagline':'团结一心，共促汉语翻译和口译员的职业化与社会保障',
+    'hero.cta':'确认我的参加',
+    'hero.ctaSub':'凭邀请参加 · 需缴纳25,000 FCFA参会费用',
+    'event.eyebrow':'关于大会','event.title':'全体大会',
+    'event.description':'ACTILC（喀麦隆汉语翻译和口译员协会）诚邀您参加第二届全体大会。这是一次重要的聚会，旨在促进专业交流，共同探讨我们职业的未来发展。',
+    'event.themeLabel':'第二届大会主题',
+    'event.theme':'团结一心，共促汉语翻译和口译员的职业化与社会保障',
+    'event.dateLabel':'日期','event.date':'2026年12月27日（星期日）',
+    'event.timeLabel':'时间','event.time':'上午9时整',
+    'event.locationLabel':'地点','event.location':'法朗科酒店，雅温得',
+    'event.h1Title':'职业化','event.h1':'共同探讨行业标准，推动职业认可',
+    'event.h2Title':'社会保障','event.h2':'就翻译和口译员的社会保障问题进行讨论，提出切实可行的解决方案',
+    'event.h3Title':'团结与网络','event.h3':'加强ACTILC社区成员间的联系，彰显我们的专业价值',
+    'event.contribution':'参会费用','event.contributionNote':'每位会员 · 收到正式邀请函的必要条件',
+    'why.eyebrow':'Pourquoi remplir le RSVP ?','why.title':'为什么要填写回执？',
+    'why.intro':'RSVP表格是注册并纳入全体大会统筹的首要必要步骤。',
+    'why.p1Title':'注册是强制性的','why.p1':'未填写RSVP，则无法建立档案，也无法收到正式邀请函。',
+    'why.p2Title':'仅填写RSVP还不够','why.p2':'填写表格确认您的参与意愿，但尚不能保证您的名额，最终确认取决于参会费用的缴纳。',
+    'why.p3Title':'费用缴清方可获得邀请','why.p3':'正式电子邀请函仅在25,000 FCFA参会费用全额到账并经核实后方可发出。',
+    'why.p4Title':'可分多次缴费','why.p4':'参会费用可分多次缴纳，秘书处将逐笔记录，直至累计达到总额。',
+    'why.p5Title':'专属个人邀请函','why.p5':'审核通过后，您将通过电子邮件收到以ACTILC名义签发的正式邀请函，严禁转让。',
+    'how.eyebrow':'Comment ça fonctionne ?','how.title':'流程说明',
+    'how.steps':[
+      {t:'填写RSVP回执',d:'请填写您的个人信息及ACTILC会员编号。'},
+      {t:'秘书处收到您的档案',d:'您的回执将立即通知ACTILC秘书处。'},
+      {t:'记录缴费情况',d:'秘书处将手动记录您每次缴纳的参会费用。'},
+      {t:'跟踪您的缴费进度',d:'在总缴费额未达到25,000 FCFA之前，您的档案将保持待审状态。'},
+      {t:'档案审核通过',d:'一旦您的参会费用达到25,000 FCFA，您的档案将自动审核通过。'},
+      {t:'发送邀请函',d:'秘书处将触发发送您的最终个性化邀请函。'},
+      {t:'收到邀请函',d:'您的ACTILC正式邀请函将发送至您的电子邮箱，请妥善保存以备出示。'},
+    ],
+    'form.eyebrow':'确认表格','form.title':'确认表格',
+    'form.subtitle':'请填写您的信息以登记参加全体大会。',
+    'form.fullName':'姓名','form.fullNamePh':'您的姓名',
+    'form.email':'电子邮件地址','form.emailPh':'您的邮箱',
+    'form.phone':'电话号码',
+    'form.translatorId':'ACTILC会员编号','form.translatorIdPh':'您的会员编号',
+    'form.city':'城市 / 所在地','form.cityPh':'您所在的城市',
+    'form.participates':'是否确认参加？',
+    'form.participatesYes':'是，我确认参加',
+    'form.participatesNo':'否，我无法参加',
+    'form.comment':'留言或备注（选填）','form.commentPh':'给秘书处的留言…',
+    'form.submit':'发送我的确认','form.submitting':'发送中…',
+    'form.successTitle':'您的RSVP已成功登记！',
+    'form.successDesc':'感谢您的确认。ACTILC秘书处已收到通知。一旦您的25,000 FCFA参会费用全额到账并获得验证，我们将向您发送正式邀请函。',
+    'form.statusLink':'查看我的状态 →',
+    'form.required':'此项为必填项','form.invalidEmail':'电子邮件地址无效',
+    'form.duplicate':'该邮箱或会员编号已存在RSVP记录。',
+    'form.error':'发生错误，请重试。',
+    'footer.association':'ACTILC','footer.chinese':'喀麦隆汉语翻译和口译员协会','footer.rights':'版权所有',
+  }
+};
+
+// Detect language
+function detectLang() {
+  const saved = localStorage.getItem('actilc_lang');
+  if (saved) return saved;
+  const nav = (navigator.language || navigator.userLanguage || 'fr').toLowerCase();
+  if (nav.startsWith('zh')) return 'zh';
+  if (nav.startsWith('en')) return 'en';
+  return 'fr';
+}
+
+let currentLang = detectLang();
+
+function t(key) { return TRANSLATIONS[currentLang][key] || TRANSLATIONS.fr[key] || key; }
+
+function applyTranslations() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const val = t(el.dataset.i18n);
+    if (typeof val === 'string') el.textContent = val;
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    el.placeholder = t(el.dataset.i18nPlaceholder);
+  });
+
+  // Build steps
+  const steps = t('how.steps');
+  const container = document.getElementById('stepsContainer');
+  if (container && Array.isArray(steps)) {
+    container.innerHTML = steps.map((s,i) => `
+      <div class="step reveal" style="transition-delay:${i*0.07}s">
+        <div class="step-left">
+          <div class="step-num">${i+1}</div>
+          <div class="step-line"></div>
+        </div>
+        <div style="padding-bottom:8px">
+          <div class="step-title">${s.t}</div>
+          <div class="step-desc">${s.d}</div>
+        </div>
+      </div>`).join('');
+    initReveal();
+  }
+
+  // Lang buttons
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === currentLang);
+  });
+
+  // Success texts (pre-populate)
+  document.querySelectorAll('#formSuccess [data-i18n]').forEach(el => {
+    el.textContent = t(el.dataset.i18n);
+  });
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('actilc_lang', lang);
+  applyTranslations();
+  // Re-run reveal for newly rendered elements
+  setTimeout(initReveal, 50);
+}
+
+// Lang buttons
+document.querySelectorAll('.lang-btn').forEach(b => {
+  b.addEventListener('click', () => setLang(b.dataset.lang));
+});
+
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+}, {passive:true});
+
+// Hamburger
+const ham = document.getElementById('hamburger');
+const menu = document.getElementById('mobileMenu');
+ham.addEventListener('click', () => menu.classList.toggle('open'));
+document.querySelectorAll('.menu-link').forEach(l => {
+  l.addEventListener('click', () => menu.classList.remove('open'));
+});
+menu.querySelectorAll('.lang-btn').forEach(b => {
+  b.addEventListener('click', () => { setLang(b.dataset.lang); menu.classList.remove('open'); });
+});
+
+// Scroll reveal
+function initReveal() {
+  const els = document.querySelectorAll('.reveal, .reveal-left');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, {threshold:.12});
+  els.forEach(el => { if (!el.classList.contains('visible')) obs.observe(el); });
+}
+
+// RSVP Form
+const API_BASE = document.currentScript ? new URL(document.currentScript.src).origin + '/china' : '';
+// Try to determine API base from current URL
+function getApiBase() {
+  const url = new URL(window.location.href);
+  const parts = url.pathname.split('/').filter(Boolean);
+  // Find 'china' in path or use root
+  const chinaIdx = parts.indexOf('china');
+  if (chinaIdx !== -1) {
+    return url.origin + '/' + parts.slice(0, chinaIdx+1).join('/');
+  }
+  return url.origin + url.pathname.replace(/\/[^/]*$/, '');
+}
+const BASE = getApiBase();
+
+document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  clearErrors();
+
+  const fullName     = document.getElementById('fullName').value.trim();
+  const email        = document.getElementById('email').value.trim();
+  const phone        = document.getElementById('phone').value.trim();
+  const translatorId = document.getElementById('translatorId').value.trim();
+  const city         = document.getElementById('city').value.trim();
+  const participates = document.querySelector('input[name="participates"]:checked').value === '1';
+  const comment      = document.getElementById('comment').value.trim();
+
+  let valid = true;
+  if (!fullName)     { showError('fullName'); valid = false; }
+  if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) { showError('email'); valid = false; }
+  if (!translatorId) { showError('translatorId'); valid = false; }
+  if (!valid) return;
+
+  const btn = document.getElementById('btnSubmit');
+  btn.disabled = true;
+  btn.querySelector('[data-i18n]').textContent = t('form.submitting');
+
+  try {
+    const r = await fetch(`${BASE}/api/rsvp.php`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({fullName,email,phone,translatorId,city,participates,comment})
+    });
+    const d = await r.json();
+    if (r.ok) {
+      document.getElementById('rsvpForm').style.display = 'none';
+      const sBox = document.getElementById('formSuccess');
+      sBox.style.display = 'block';
+      sBox.querySelectorAll('[data-i18n]').forEach(el => el.textContent = t(el.dataset.i18n));
+    } else if (r.status === 409) {
+      showFormError(t('form.duplicate'));
+    } else {
+      showFormError(t('form.error'));
+    }
+  } catch {
+    showFormError(t('form.error'));
+  }
+  btn.disabled = false;
+  btn.querySelector('[data-i18n]').textContent = t('form.submit');
+});
+
+function showError(id) { document.getElementById('err-'+id).style.display='block'; }
+function clearErrors() { document.querySelectorAll('.error-msg').forEach(e => e.style.display='none'); }
+function showFormError(msg) { const el = document.getElementById('formError'); el.textContent=msg; el.style.display='block'; }
+
+// Footer year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Init
+applyTranslations();
+initReveal();
+</script>
+</body>
+</html>

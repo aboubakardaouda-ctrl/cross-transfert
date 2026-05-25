@@ -1,0 +1,25 @@
+# ACTILC RSVP Platform
+Options -Indexes
+
+# Security headers
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "same-origin"
+</IfModule>
+
+# Protect config files
+<Files "config.php">
+  Order allow,deny
+  Deny from all
+</Files>
+
+# PHP error handling (disable error display in production)
+php_flag display_errors Off
+php_flag log_errors On
+
+# UTF-8
+AddDefaultCharset UTF-8
+
+# Redirect admin root to dashboard
+RedirectMatch ^/china/admin/?$ /china/admin/dashboard.php

@@ -1,0 +1,90 @@
+================================================
+ACTILC RSVP — Guide de déploiement sur LWS
+================================================
+
+ÉTAPES D'INSTALLATION
+=====================
+
+1. CRÉER LA BASE DE DONNÉES MYSQL
+   - Connectez-vous à votre LWS Panel
+   - Allez dans "Bases de données MySQL"
+   - Créez une base de données, un utilisateur, et assignez l'utilisateur
+   - Notez : DB_NAME, DB_USER, DB_PASSWORD
+
+2. IMPORTER LE SCHÉMA SQL
+   - Allez dans phpMyAdmin (via LWS Panel)
+   - Sélectionnez votre base de données
+   - Cliquez sur "Importer" → choisissez le fichier "database.sql"
+   - Cliquez "Exécuter"
+
+3. CONFIGURER api/config.php
+   - Ouvrez le fichier api/config.php
+   - Remplacez les valeurs :
+     DB_NAME    → nom de votre base de données
+     DB_USER    → nom d'utilisateur MySQL
+     DB_PASS    → mot de passe MySQL
+     ADMIN_EMAIL → votre email pour recevoir les notifications
+     FROM_EMAIL → email d'envoi (ex: noreply@billetinvitation.site)
+     SITE_URL   → URL complète du dossier (ex: https://billetinvitation.site/china)
+
+4. CHANGER LE MOT DE PASSE ADMIN
+   - Dans api/config.php, la ligne ADMIN_PASS_HASH contient le hash du mot de passe
+   - Pour générer un nouveau hash, créez un fichier PHP temporaire :
+     <?php echo password_hash('VotreNouveauMotDePasse', PASSWORD_DEFAULT); ?>
+   - Uploadez-le, visitez l'URL, copiez le hash
+   - Collez-le dans config.php à la place de ADMIN_PASS_HASH
+   - Supprimez le fichier temporaire
+
+   OU : Connectez-vous avec le mot de passe par défaut "password"
+        puis changez-le directement en base via phpMyAdmin.
+
+5. UPLOADER LES FICHIERS
+   - Uploadez TOUT le contenu du dossier "china" dans htdocs/china/
+   - Structure finale :
+     htdocs/china/
+     ├── index.html
+     ├── rsvp-status.html
+     ├── .htaccess
+     ├── database.sql
+     ├── api/
+     │   ├── config.php  ← À CONFIGURER
+     │   ├── db.php
+     │   ├── rsvp.php
+     │   └── ...
+     └── admin/
+         ├── login.php
+         ├── dashboard.php
+         └── ...
+
+ACCÈS AU SITE
+=============
+  Page publique : https://billetinvitation.site/china/
+  Suivi statut  : https://billetinvitation.site/china/rsvp-status.html
+  Administration: https://billetinvitation.site/china/admin/login.php
+
+IDENTIFIANTS ADMIN PAR DÉFAUT
+==============================
+  Identifiant : admin
+  Mot de passe : password
+  ⚠ CHANGEZ-LE IMMÉDIATEMENT après la première connexion !
+
+FONCTIONNALITÉS
+===============
+  ✓ Page publique multilingue (FR/EN/中)
+  ✓ Formulaire RSVP avec validation
+  ✓ Notifications email admin à chaque RSVP
+  ✓ Tableau de bord admin : liste, recherche, filtres
+  ✓ Gestion des versements (paiements partiels)
+  ✓ Envoi d'invitation par email (HTML stylisé)
+  ✓ Envoi groupé à tous les validés
+  ✓ Export CSV Excel-compatible
+  ✓ Page de suivi de statut pour les participants
+  ✓ Paramètres événement modifiables depuis l'admin
+
+PRÉREQUIS SERVEUR
+=================
+  - PHP 7.4 ou supérieur (disponible sur LWS)
+  - Extension PDO MySQL (activée par défaut)
+  - Fonction mail() disponible (activée sur LWS)
+
+================================================
