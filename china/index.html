@@ -717,7 +717,7 @@ function initReveal() {
   els.forEach(el => {
     if (el.classList.contains('visible')) return;
     const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
+    if (rect.top <= window.innerHeight) {
       el.classList.add('visible');
     } else {
       obs.observe(el);
@@ -797,7 +797,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 async function loadPublicList() {
   try {
     const r = await fetch(`${BASE}/api/public-list.php`);
-    if (!r.ok) return;
+    if (!r.ok) { document.getElementById('plistGrid').innerHTML = '<div class="plist-empty">—</div>'; return; }
     const d = await r.json();
     const countEl = document.getElementById('plistCount');
     const gridEl  = document.getElementById('plistGrid');
@@ -823,12 +823,16 @@ async function loadPublicList() {
       </div>`;
     }).join('');
     initReveal();
-  } catch(e) {}
+  } catch(e) {
+    document.getElementById('plistGrid').innerHTML = '<div class="plist-empty">—</div>';
+  }
 }
 
 // Init
 applyTranslations();
-setTimeout(initReveal, 50);
+initReveal();                    // tentative immédiate
+setTimeout(initReveal, 100);    // après rendu
+setTimeout(initReveal, 500);    // filet de sécurité
 loadPublicList();
 </script>
 </body>
